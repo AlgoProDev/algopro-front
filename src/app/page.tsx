@@ -114,6 +114,7 @@ export default function Home() {
             <div>
               {people.slice(0, 3).map((person, index) => (
                 <PersonBox
+                  key={index}
                   image={person.image}
                   name={person.name}
                   title={person.title}
@@ -123,6 +124,7 @@ export default function Home() {
             <div>
               {people.slice(3, 6).map((person, index) => (
                 <PersonBox
+                  key={index}
                   image={person.image}
                   name={person.name}
                   title={person.title}
