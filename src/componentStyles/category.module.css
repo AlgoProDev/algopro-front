@@ -1,0 +1,22 @@
+.button_cluster {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 23px 32px 23px 32px;
+  background-color: #fafafa;
+  text-align: center;
+  margin-right: 20px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+.button:hover {
+  background-color: #f1f1f1;
+}
+.button:last-child {
+  margin-right: 0;
+}

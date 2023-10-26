@@ -1,0 +1,40 @@
+.header_container {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f1f1;
+}
+.left_container {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right_container {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu_text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #080808;
+  opacity: 50%;
+  transition: opacity 0.2s ease-in-out;
+}
+.menu_text:hover {
+  opacity: 80%;
+}
+.separate {
+  width: 50px;
+}
+
+@media screen and (max-width: 480px) {
+  .left_container {
+    width: 70%;
+  }
+}

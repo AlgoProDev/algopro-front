@@ -1,0 +1,31 @@
+.container_box {
+  background-color: #fafafa;
+  z-index: 1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: #f1f1f1 1px solid;
+}
+.image {
+  width: 250px;
+  margin: 10px 10px 0 10px;
+  object-fit: cover;
+  height: auto;
+  border-radius: 10px;
+}
+
+.info {
+  padding: 0 15px 24px 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.info p:first-child {
+  font-weight: 700;
+  color: #3e3232;
+}
+.info p:last-child {
+  color: #3e3232;
+  opacity: 0.75;
+}

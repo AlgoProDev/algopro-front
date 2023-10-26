@@ -1,0 +1,27 @@
+.back_container {
+  margin-right: 20px;
+  background-color: rgba(0, 128, 0, 0.1);
+  padding: 17px 20px 17px 20px;
+  border-radius: 20px;
+}
+.back_svg path {
+  fill: rgba(0, 128, 0, 1);
+}
+.data_container {
+  margin-right: 20px;
+  background-color: rgba(255, 0, 89, 0.1);
+  padding: 17px 20px 17px 20px;
+  border-radius: 20px;
+}
+.data_svg path {
+  fill: rgb(255, 0, 89) !important;
+}
+.front_container {
+  margin-right: 20px;
+  background-color: rgba(158, 92, 242, 0.1);
+  padding: 17px 20px 17px 20px;
+  border-radius: 20px;
+}
+.front_svg path {
+  fill: rgba(158, 92, 242, 1) !important;
+}
