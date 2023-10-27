@@ -1,0 +1,71 @@
+/* Footer Container */
+.footer_container {
+  background-color: #fafafa;
+  margin: 10vh 0 0 0;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 0 3vw 0 3vw;
+  border-radius: 82px 82px 0 0;
+}
+
+.footer_information {
+  display: flex;
+  justify-content: space-between;
+  padding: 70px 30px 30px 30px;
+}
+.footer_information p {
+  width: 70%;
+  background-color: #f5f2fa;
+  padding: 30px;
+  transform: skew(-14deg);
+  border-radius: 42px;
+}
+
+.footer_link_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0 0 0;
+}
+
+.footer_link_container h3 span {
+  color: #9e5cf2;
+}
+
+.footer_link_container div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.footer_link_container div p {
+  color: #080808;
+  opacity: 0.75;
+  font-size: 13px;
+  transition: opacity 0.2s ease-in-out;
+}
+.footer_link_container div p:hover {
+  opacity: 1;
+}
+.footer_legal {
+  margin: 50px 0 50px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_legal p {
+  color: #3e3232;
+  opacity: 0.75;
+  font-size: 12px;
+}
+
+.footer_legal p a {
+  color: #3e3232;
+  opacity: 0.75;
+  font-size: 12px;
+}
+
+.footer_legal p:first-child a:hover {
+  opacity: 1;
+}
+/* End */

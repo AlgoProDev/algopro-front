@@ -1,13 +1,35 @@
 import React from "react";
-import styles from "@/componentStyles/informationimage.module.css";
+import styles from "@/componentStyles/preview.module.css";
 import Image from "next/image";
 import DisplayImage from "@/assets/images/girl-in-chair.png";
 import Circle from "@/assets/decorations/circle.svg";
 import Triangle from "@/assets/decorations/triangle.svg";
 import Web from "@/assets/decorations/web.svg";
 import Bulb from "@/assets/decorations/bulb.svg";
+import Arrow1 from "@/assets/decorations/arrow1.svg";
+
 type Props = {};
 
+const Preview = () => {
+  return (
+    <div className={styles.preview_container}>
+      <div className={styles.information_container}>
+        <h1 className={styles.information_text}>
+          🙌 Hello friends !
+          <br />I am Sofia and we want to start a web design course together. Do
+          you like it too 😍 ?
+        </h1>
+        <div className={styles.arrow_container}>
+          <Arrow1 className={styles.arrow1} />
+        </div>
+        <a href="/" className={styles.information_button}>
+          Contact Us Now &nbsp;&nbsp;&nbsp;&gt;
+        </a>
+      </div>
+      <InformationImage />
+    </div>
+  );
+};
 const InformationImage = (props: Props) => {
   return (
     <div className={styles.info_image_container}>
@@ -29,4 +51,4 @@ const InformationImage = (props: Props) => {
   );
 };
 
-export default InformationImage;
+export default Preview;

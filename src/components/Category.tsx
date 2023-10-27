@@ -1,15 +1,33 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "@/componentStyles/category.module.css";
-import useIsMobile from "./IsMobile";
+import useIsMobile from "../hooks_data/IsMobile";
+import { categories } from "../hooks_data/Data";
 
+const Category = () => {
+  return (
+    <div className={styles.categories}>
+      {categories.map((category, index) => (
+        <CategoryBox
+          key={index}
+          logo={
+            <div className={category.cont_style}>
+              <category.Logo className={category.svg_style} />
+            </div>
+          }
+          text={category.text}
+          url={category.url}
+        />
+      ))}
+    </div>
+  );
+};
 type Props = {
   logo?: any;
   text: string[];
   url: string[];
 };
-
-const Category = ({ logo, text, url }: Props) => {
+const CategoryBox = ({ logo, text, url }: Props) => {
   const isMobile = useIsMobile();
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {

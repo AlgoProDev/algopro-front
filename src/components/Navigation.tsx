@@ -1,43 +1,62 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import LogoAcademy from "../assets/icons/LogoAcademy.svg";
 import styles from "@/componentStyles/navigation.module.css";
-import useIsMobile from "./IsMobile";
-
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
 type Props = {};
 
 const Navigation = (props: Props) => {
-  const isMobile = useIsMobile();
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  const handleLinkClick = () => {
+    setShowNavbar(false);
+  };
 
   return (
     <div className={styles.header_container}>
       <div className={styles.left_container}>
         <LogoAcademy className={styles.logo} />
-        <div className={styles.separate} />
+      </div>{" "}
+      <div className={styles.menu_icon} onClick={handleShowNavbar}>
+        {!showNavbar ? (
+          <MenuIcon style={{ fontSize: "2rem" }} />
+        ) : (
+          <CloseIcon style={{ fontSize: "2rem" }} />
+        )}
+      </div>{" "}
+      <div
+        className={
+          showNavbar ? styles.right_container_active : styles.right_container
+        }
+      >
+        <ul>
+          <li>
+            <a href="/" className={styles.menu_text} onClick={handleLinkClick}>
+              Work
+            </a>
+          </li>
+          <li>
+            <a href="/" className={styles.menu_text} onClick={handleLinkClick}>
+              Courses
+            </a>
+          </li>
+          <li>
+            <a href="/" className={styles.menu_text} onClick={handleLinkClick}>
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="/" className={styles.menu_text} onClick={handleLinkClick}>
+              Contact
+            </a>
+          </li>
+        </ul>
       </div>
-      {isMobile ? (
-        <></>
-      ) : (
-        <div className={styles.right_container}>
-          <a href="/" className={styles.menu_text}>
-            Work
-          </a>
-          <a href="/" className={styles.menu_text}>
-            Courses
-          </a>
-          <a href="/" className={styles.menu_text}>
-            About Us
-          </a>
-          <a href="/" className={styles.menu_text}>
-            Contact
-          </a>
-        </div>
-      )}
     </div>
   );
 };

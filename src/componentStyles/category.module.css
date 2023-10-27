@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 10vh 0 0 0;
 }
 
 .button {
@@ -19,4 +20,10 @@
 }
 .button:last-child {
   margin-right: 0;
+}
+.categories {
+  width: 90%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
