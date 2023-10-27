@@ -49,62 +49,59 @@
     width: 80%;
     margin-bottom: 20px;
   }
+  .categories {
+    background-color: white;
+    z-index: 1;
+    padding-bottom: 0;
+  }
+  .button_drop {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: column;
+    animation-duration: 0.5s;
+    z-index: 0;
+    overflow: hidden; /* hide content that goes beyond the div's height */
+    max-height: 400px;
+  }
+
+  .button_drop.animate_down {
+    animation-name: animate-down;
+  }
+
+  .button_drop.animate_up {
+    animation-name: animate-up;
+  }
 }
 
-/* Enter from the top */
-.slide-enter {
-  transform: translateY(-100%);
-  opacity: 0;
+@keyframes animate-down {
+  0% {
+    max-height: 0;
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    max-height: 400px;
+    transform: translateY(0);
+  }
 }
 
-.slide-enter-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-}
-
-/* Exit to the top */
-.slide-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.slide-exit-active {
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-}
-
-/* Slide from the right */
-.slideRight-enter {
-  transform: translateX(100%);
-}
-
-.slideRight-enter-active {
-  transform: translateX(0);
-  transition: transform 300ms ease-in-out;
-}
-
-/* Slide from the left */
-.slideLeft-enter {
-  transform: translateX(-100%);
-}
-
-.slideLeft-enter-active {
-  transform: translateX(0);
-  transition: transform 300ms ease-in-out;
-}
-
-/* These exit animations make the buttons slide to the top when switching from any category to null */
-.slideLeft-exit,
-.slideRight-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.slideLeft-exit-active,
-.slideRight-exit-active {
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+@keyframes animate-up {
+  0% {
+    max-height: 400px;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  99% {
+    visibility: visible;
+  }
+  100% {
+    max-height: 0;
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
 }
