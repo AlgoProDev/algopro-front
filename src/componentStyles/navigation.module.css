@@ -21,6 +21,7 @@
   justify-content: center;
 }
 .right_container ul {
+  gap: 30px;
   display: flex;
 }
 .right_container ul li {
@@ -93,6 +94,7 @@
     align-items: stretch;
   }
   .right_container ul {
+    gap: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
