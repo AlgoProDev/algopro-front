@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import styles from "@/componentStyles/category.module.css";
 import useIsMobile from "../hooks_data/IsMobile";
 import { categories } from "../hooks_data/Data";
+
 const Category = () => {
   const isMobile = useIsMobile();
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
@@ -35,6 +36,7 @@ const Category = () => {
         activeCategory !== null &&
         categories[activeCategory].text.map((item, index) => (
           <a
+            key={index}
             href={categories[activeCategory].url[index]}
             className={styles.button}
           >
