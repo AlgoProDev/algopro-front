@@ -1,15 +1,24 @@
 .button_cluster {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
+}
+
+.categories {
   margin: 10vh 0 0 0;
+  width: 90%;
+  padding: 20px;
+  column-gap: 30px;
+  row-gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .button {
   padding: 23px 32px 23px 32px;
   background-color: #fafafa;
   text-align: center;
-  margin-right: 20px;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
   font-weight: 500;
@@ -18,12 +27,84 @@
 .button:hover {
   background-color: #f1f1f1;
 }
+
 .button:last-child {
   margin-right: 0;
 }
-.categories {
-  width: 90%;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+
+@media screen and (max-width: 1000px) and (min-width: 601px) {
+  .categories {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1001px) {
+  .categories {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .button {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Enter from the top */
+.slide-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+/* Exit to the top */
+.slide-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+/* Slide from the right */
+.slideRight-enter {
+  transform: translateX(100%);
+}
+
+.slideRight-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Slide from the left */
+.slideLeft-enter {
+  transform: translateX(-100%);
+}
+
+.slideLeft-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+/* These exit animations make the buttons slide to the top when switching from any category to null */
+.slideLeft-exit,
+.slideRight-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slideLeft-exit-active,
+.slideRight-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 }

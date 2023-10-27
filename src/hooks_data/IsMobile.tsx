@@ -6,10 +6,10 @@ function useIsMobile(): boolean {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsMobile(window.innerWidth <= 480);
+      setIsMobile(window.innerWidth <= 600);
 
       const handleResize = () => {
-        setIsMobile(window.innerWidth <= 480);
+        setIsMobile(window.innerWidth <= 600);
       };
 
       window.addEventListener("resize", handleResize);

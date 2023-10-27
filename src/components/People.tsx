@@ -29,26 +29,14 @@ const People = () => {
       <div className={styles.people_displays}>
         <div className={styles.people_background} />
         <div className={styles.people_cards}>
-          <div>
-            {people.slice(0, 3).map((person, index) => (
-              <PersonBox
-                key={index}
-                image={person.image}
-                name={person.name}
-                title={person.title}
-              />
-            ))}
-          </div>
-          <div>
-            {people.slice(3, 6).map((person, index) => (
-              <PersonBox
-                key={index}
-                image={person.image}
-                name={person.name}
-                title={person.title}
-              />
-            ))}
-          </div>
+          {people.slice(0, 6).map((person, index) => (
+            <PersonBox
+              key={index}
+              image={person.image}
+              name={person.name}
+              title={person.title}
+            />
+          ))}
         </div>
       </div>
     </div>

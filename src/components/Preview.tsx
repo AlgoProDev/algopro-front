@@ -8,8 +8,6 @@ import Web from "@/assets/decorations/web.svg";
 import Bulb from "@/assets/decorations/bulb.svg";
 import Arrow1 from "@/assets/decorations/arrow1.svg";
 
-type Props = {};
-
 const Preview = () => {
   return (
     <div className={styles.preview_container}>
@@ -22,15 +20,16 @@ const Preview = () => {
         <div className={styles.arrow_container}>
           <Arrow1 className={styles.arrow1} />
         </div>
-        <a href="/" className={styles.information_button}>
-          Contact Us Now &nbsp;&nbsp;&nbsp;&gt;
-        </a>
+        <p className={styles.information_button}>
+          <a href="/">Contact Us Now</a>
+        </p>
       </div>
       <InformationImage />
     </div>
   );
 };
-const InformationImage = (props: Props) => {
+
+const InformationImage = () => {
   return (
     <div className={styles.info_image_container}>
       <div className={styles.decorators}>

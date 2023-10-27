@@ -9,7 +9,7 @@
 
 .people_information {
   padding: 0vh 50px 10vh 50px;
-  width: 35%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +32,7 @@
 }
 
 .people_button {
-  max-width: 40%;
+  width: fit-content;
   padding: 16px;
   background-color: black;
   color: white;
@@ -41,11 +41,10 @@
 }
 
 .people_displays {
-  position: relative;
   align-items: center;
   display: flex;
   justify-content: center;
-  flex: 1;
+  width: 65%;
 }
 
 .people_background {
@@ -55,20 +54,17 @@
   z-index: 0;
   border-radius: 25px 0 0 25px;
   height: 300px;
-  width: 120%;
-  margin-left: 200px;
+  width: 50%;
+  margin-left: 20%;
 }
 .people_cards {
-  width: 100%;
-  margin-left: 200px;
+  max-width: 100%;
   gap: 30px;
   z-index: 1;
   display: flex;
-  flex-direction: column;
-}
-.people_cards div {
-  display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 /* End */
 
@@ -82,8 +78,8 @@
   border: #f1f1f1 1px solid;
 }
 .image {
-  width: 250px;
-  margin: 10px 10px 0 10px;
+  width: 220px;
+  margin: 10px 10px 10px 10px;
   object-fit: cover;
   height: auto;
   border-radius: 10px;
@@ -98,8 +94,44 @@
 .info p:first-child {
   font-weight: 700;
   color: #3e3232;
+  font-size: 12px;
 }
 .info p:last-child {
   color: #3e3232;
+  font-size: 12px;
   opacity: 0.75;
+}
+
+@media screen and (max-width: 800px) {
+  .people_container {
+    padding: 10vh 50px 10vh 50px;
+    min-height: 0;
+  }
+
+  .people_container {
+    flex-direction: column;
+  }
+  .people_information {
+    padding: 0 0 10vh 0;
+  }
+  .people_displays {
+    display: none;
+  }
+  .people_button {
+    margin: 40px 0 0 0;
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1400px) {
+  .people_container {
+    width: 100%;
+  }
+  .image {
+    width: 160px;
+  }
+  .people_displays {
+    width: 60%;
+  }
+  .people_cards div {
+    gap: 10px;
+  }
 }

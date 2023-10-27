@@ -1,5 +1,4 @@
 .back_container {
-  margin-right: 20px;
   background-color: rgba(0, 128, 0, 0.1);
   padding: 17px 20px 17px 20px;
   border-radius: 20px;
@@ -8,7 +7,6 @@
   fill: rgba(0, 128, 0, 1);
 }
 .data_container {
-  margin-right: 20px;
   background-color: rgba(255, 0, 89, 0.1);
   padding: 17px 20px 17px 20px;
   border-radius: 20px;
@@ -17,7 +15,6 @@
   fill: rgb(255, 0, 89) !important;
 }
 .front_container {
-  margin-right: 20px;
   background-color: rgba(158, 92, 242, 0.1);
   padding: 17px 20px 17px 20px;
   border-radius: 20px;
