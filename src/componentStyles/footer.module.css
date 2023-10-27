@@ -27,7 +27,9 @@
   gap: 50px;
   margin: 50px 0 0 0;
 }
-
+.footer_link_container h3 {
+  margin-bottom: 20px;
+}
 .footer_link_container h3 span {
   color: #9e5cf2;
 }
@@ -106,6 +108,7 @@
   }
   .footer_container {
     width: 100%;
+    border-radius: 0;
   }
   .footer_legal {
     width: 90%;
