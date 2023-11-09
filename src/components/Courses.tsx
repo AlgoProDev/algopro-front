@@ -6,39 +6,49 @@ import BookIcon from "@/assets/icons/book.svg";
 import StudentIcon from "@/assets/icons/student.svg";
 import DifficultyIcon from "@/assets/icons/level.svg";
 import useIsMobile from "../hooks_data/IsMobile";
-import { courses } from "../hooks_data/Data";
+import { fetchCourses } from "../hooks_data/Data";
 type Props = {
   image: any;
   course_name: string;
   lessons: string;
   students: string;
   level: string;
-  url: string;
   price: string;
 };
 
 export const Courses = () => {
   const isMobile = useIsMobile();
   const [isClient, setIsClient] = useState(false);
+  const [data, setData] = useState<any>();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     setIsClient(true);
+    getData();
   }, []);
+  const getData = async () => {
+    try {
+      const courses = await fetchCourses();
+      setData(courses);
+      setLoading(false);
+    } catch {}
+  };
+  console.log(data);
   return (
     <div className={styles.courses_view}>
       <div className={styles.courses_header}>
         <div className={styles.course_title}>
           <p className={styles.course_square}>&#9632;&nbsp;&nbsp;&nbsp;</p>
-          <h3 className={styles.course_title_text}>OUR COURSES</h3>
+          <h3 className={styles.course_title_text}>Our Courses</h3>
         </div>
         <a href="" className={styles.more_courses}>
           All Courses
         </a>
       </div>
       <div className={styles.course_box_container}>
-        {isMobile
-          ? courses
-              .slice(0, 3)
-              .map((course, index) => (
+        {isMobile && !loading
+          ? data
+              ?.slice(0, 3)
+              .map((course: any, index: number) => (
                 <CourseBox
                   key={index}
                   image={course.image}
@@ -46,13 +56,12 @@ export const Courses = () => {
                   lessons={course.lessons}
                   students={course.students}
                   level={course.level}
-                  url={course.url}
                   price={course.price}
                 />
               ))
-          : courses
-              .slice(0, 8)
-              .map((course, index) => (
+          : data
+              ?.slice(0, 8)
+              .map((course: any, index: number) => (
                 <CourseBox
                   key={index}
                   image={course.image}
@@ -60,7 +69,6 @@ export const Courses = () => {
                   lessons={course.lessons}
                   students={course.students}
                   level={course.level}
-                  url={course.url}
                   price={course.price}
                 />
               ))}
@@ -75,12 +83,14 @@ function CourseBox({
   lessons,
   students,
   level,
-  url,
   price,
 }: Props) {
+  // Encode the subject for the mailto link
+  const encodedSubject = encodeURIComponent(`${course_name} Application`);
+
   return (
     <div className={styles.course_container}>
-      <Image src={image} alt="course-image" className={styles.course_image} />
+      <img src={image} alt="course-image" className={styles.course_image} />
       <h4 className={styles.course_name}>{course_name}</h4>
       <div className={styles.info}>
         <div className={styles.lessons}>
@@ -97,7 +107,12 @@ function CourseBox({
         </div>
       </div>
       <div className={styles.button_container}>
-        <a className={styles.button} href={url}>
+        <a
+          className={styles.button}
+          href={`mailto:info@algopro.dev?subject=${encodedSubject}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Start Course
         </a>
         <p className={styles.price}>{price} €</p>

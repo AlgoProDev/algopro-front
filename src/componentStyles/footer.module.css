@@ -87,14 +87,18 @@
   .footer_info {
     width: 90%;
   }
+  .footer_cert {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .footer_link_container {
-    flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     flex: 1;
+    gap: 40px;
   }
   .footer_info {
     flex-wrap: wrap;
@@ -115,5 +119,8 @@
   }
   .footer_legal p:nth-child(2) {
     text-align: right;
+  }
+  .footer_cert {
+    display: none;
   }
 }

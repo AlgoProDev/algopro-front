@@ -23,67 +23,76 @@
 }
 .course_title_text {
   width: 100%;
+  font-weight: 700;
 }
 
 .more_courses {
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 10px 24px 10px 24px;
-  font-weight: 500;
+  font-weight: 600;
+  color: rgba(8, 8, 8, 0.6);
+  transition: all 0.2s ease-in-out;
 }
 .more_courses:hover {
+  color: rgba(8, 8, 8, 0.75);
   background-color: #f0f0f0;
 }
 
 .course_box_container {
-  max-width: 100%;
   padding-top: 5vh;
+  flex-grow: 1;
   display: flex;
+  max-width: 1348px;
   column-gap: 20px;
   row-gap: 40px;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
-
 /* End */
 
 /* Course Box */
+
 .course_container {
   height: auto;
+  align-self: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: #fafafa;
   border-radius: 12px;
   border: #f1f1f1 1px solid;
 }
+
 .course_image {
-  width: 300px;
+  max-width: 300px;
+  min-height: 200px;
   margin: 10px;
   object-fit: cover;
-  height: auto;
   border-radius: 10px;
 }
 
 .course_name {
   width: 95%;
   margin: 10px 0 0 0;
+  padding: 0 10px 0 10px;
   overflow: hidden;
   white-space: nowrap;
+  color: rgba(8, 8, 8, 0.75);
   text-overflow: ellipsis;
 }
 .info {
   margin: 27px 0 27px 0;
+  padding: 0 10px 0 10px;
   width: 96%;
   display: flex;
   justify-content: space-between;
   font-size: 10px;
   font-weight: 600;
+  color: rgba(8, 8, 8, 0.6);
 }
 .button_container {
   display: flex;
-  width: 90%;
   justify-content: space-between;
+  padding: 0 15px 0 10px;
   margin: 20px 0 20px 0;
   align-items: center;
 }
@@ -97,8 +106,6 @@
   border-radius: 10px;
 }
 
-.button:hover {
-}
 .lessons,
 .level,
 .student {
@@ -113,8 +120,6 @@
 /* End */
 
 @media screen and (max-width: 800px) {
-  .course_box_container {
-  }
 }
 
 @media screen and (max-width: 738px) {

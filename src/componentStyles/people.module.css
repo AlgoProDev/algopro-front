@@ -15,8 +15,6 @@
   justify-content: center;
 }
 
-.people_text {
-}
 .people_text h1 {
   font-size: 36px;
 }
@@ -28,7 +26,10 @@
 }
 .people_text p {
   padding: 36px 0 0 0;
-  font-size: 14px;
+  font-size: 12px;
+  max-width: 90%;
+  color: rgba(8, 8, 8, 0.7);
+  font-weight: 600;
 }
 
 .people_button {

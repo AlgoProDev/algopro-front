@@ -17,16 +17,18 @@
 }
 .information_button {
   margin-top: 50px;
+  cursor: pointer;
   padding: 20px 20px 20px 24px;
   width: 40%;
   color: white;
-  background-color: black;
+  background-color: rgba(8, 8, 8, 0.8);
   border-radius: 10px;
   font-weight: 600;
   transition: all 0.2s ease-in-out;
 }
+
 .information_button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(8, 8, 8, 0.9);
 }
 .arrow_container {
   position: relative;

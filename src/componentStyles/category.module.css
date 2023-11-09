@@ -21,10 +21,13 @@
   text-align: center;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgb(8, 8, 8, 0.5);
 }
 
 .button:hover {
+  color: rgb(8, 8, 8, 0.8);
   background-color: #f1f1f1;
 }
 

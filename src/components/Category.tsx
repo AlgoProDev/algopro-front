@@ -13,26 +13,20 @@ const Category = () => {
   function handleLogoClick(index: number) {
     if (activeCategory !== null) {
       if (activeCategory === index) {
-        // The dropdown is currently visible and the same category was clicked.
-        // We need to hide the dropdown, so animate upwards
         setAnimationClass(styles.animate_up);
 
         setTimeout(() => {
           setActiveCategory(null);
-        }, 500); // matches animation duration
+        }, 500);
       } else {
-        // A different category was clicked while the dropdown is visible.
-        // First, animate upwards as if the current category content is going away.
         setAnimationClass(styles.animate_up);
 
         setTimeout(() => {
-          // Once the upwards animation is done, set the active category to the new index and animate downwards.
           setActiveCategory(index);
           setAnimationClass(styles.animate_down);
-        }, 500); // this delay gives the impression of a transition between categories
+        }, 500);
       }
     } else {
-      // The dropdown is currently hidden and needs to be shown, so animate downwards
       setAnimationClass(styles.animate_down);
       setActiveCategory(index);
     }

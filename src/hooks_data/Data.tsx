@@ -2,6 +2,62 @@ import BackendLogo from "@/assets/icons/backend-icon.svg";
 import DataLogo from "@/assets/icons/data-icon.svg";
 import FrontendLogo from "@/assets/icons/front-icon.svg";
 import styles from "@/componentStyles/data.module.css";
+import axios from "axios";
+import { parse } from "papaparse";
+
+type Course = {
+  course_name: string;
+  lessons: string;
+  students: string;
+  level: string;
+  price: string;
+  image: string;
+};
+
+export const fetchCourses = async (): Promise<Course[]> => {
+  const headers = {
+    Authorization: "Bearer ol_api_yqXI4zlfBaCaA5MZ6YXWpLaSSaONB4LdGoGLiJ",
+    "Content-Type": "application/json",
+  };
+
+  const payload = {
+    id: "all-courses-GBWw2f3w5b",
+    shareId: "cc495877-1be4-476b-8281-a9fda178909c",
+  };
+
+  try {
+    const response = await axios.post(
+      "https://corsproxy.io/?https://app.getoutline.com/api/documents.info",
+      payload,
+      { headers }
+    );
+    const markdownTable = response.data.data.text;
+    // Replace markdown table formatting with CSV and parse it
+    const csvTable = markdownTable.replace(/\|/g, ",").replace(/-{3,}/g, "");
+    const parsedData = parse(csvTable, { header: true, skipEmptyLines: true });
+    const courses: Course[] = [];
+    for (const row of parsedData.data as any) {
+      if (row[" Name "] && row[" Image "]) {
+        const courseNameMatch = row[" Name "].match(/\[([^\]]+)\]/)[1];
+        const courseName = courseNameMatch ? courseNameMatch : null;
+        const imageUrl = row[" Image "];
+        // Construct the course object
+        courses.push({
+          course_name: courseName || "",
+          lessons: row[" Hours "],
+          students: row[" Students "],
+          level: row[" Level "],
+          price: row[" Price "],
+          image: imageUrl,
+        });
+      }
+    }
+    return courses;
+  } catch (error) {
+    console.error("There was an error fetching the courses:", error);
+    return [];
+  }
+};
 
 export const categories = [
   {
@@ -24,81 +80,6 @@ export const categories = [
     Logo: FrontendLogo,
     text: ["React", "Native", "Angular"],
     url: ["/", "/", "/"],
-  },
-];
-
-export const courses = [
-  {
-    image: require("@/assets/images/python-django.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
-  },
-  {
-    image: require("@/assets/images/pytorch.png"),
-    course_name: "Learn Django - Backend with Python",
-    lessons: "12",
-    students: "15",
-    level: "Average",
-    url: "",
-    price: "400",
   },
 ];
 

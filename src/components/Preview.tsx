@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import styles from "@/componentStyles/preview.module.css";
 import Image from "next/image";
 import DisplayImage from "@/assets/images/girl-in-chair.png";
@@ -7,8 +8,11 @@ import Triangle from "@/assets/decorations/triangle.svg";
 import Web from "@/assets/decorations/web.svg";
 import Bulb from "@/assets/decorations/bulb.svg";
 import Arrow1 from "@/assets/decorations/arrow1.svg";
+import EmailModal from "./EmailModal";
 
 const Preview = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className={styles.preview_container}>
       <div className={styles.information_container}>
@@ -20,11 +24,15 @@ const Preview = () => {
         <div className={styles.arrow_container}>
           <Arrow1 className={styles.arrow1} />
         </div>
-        <p className={styles.information_button}>
-          <a href="/">Contact Us Now</a>
-        </p>
+        <button
+          onClick={() => setModalOpen(true)}
+          className={styles.information_button}
+        >
+          Contact Us Now
+        </button>
       </div>
-      <InformationImage />
+      <InformationImage />{" "}
+      <EmailModal open={isModalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 };
