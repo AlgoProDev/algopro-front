@@ -97,15 +97,20 @@
   align-items: center;
 }
 
-.button {
+.information_button {
   padding: 10px 24px 10px 24px;
   color: white;
   font-weight: 500;
   font-size: 14px;
   background-color: rgb(8, 8, 8, 0.8);
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
   border-radius: 10px;
 }
 
+.information_button:hover {
+  background-color: rgba(8, 8, 8, 0.9);
+}
 .lessons,
 .level,
 .student {
@@ -120,6 +125,10 @@
 /* End */
 
 @media screen and (max-width: 800px) {
+  .information_button {
+    width: auto;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 738px) {

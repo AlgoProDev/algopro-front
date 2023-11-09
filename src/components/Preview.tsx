@@ -32,7 +32,11 @@ const Preview = () => {
         </button>
       </div>
       <InformationImage />{" "}
-      <EmailModal open={isModalOpen} onClose={() => setModalOpen(false)} />
+      <EmailModal
+        open={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Contact Us"
+      />
     </div>
   );
 };

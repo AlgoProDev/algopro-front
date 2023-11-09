@@ -8,9 +8,10 @@ import CloseIcon from "@mui/icons-material/Close";
 interface BasicModalProps {
   open: boolean;
   onClose: () => void;
+  title: string;
 }
 
-export default function BasicModal({ open, onClose }: BasicModalProps) {
+export default function BasicModal({ open, onClose, title }: BasicModalProps) {
   const [formData, setFormData] = React.useState({
     email: "",
     name: "",
@@ -24,7 +25,6 @@ export default function BasicModal({ open, onClose }: BasicModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted data:", formData);
     setFormData({ email: "", name: "", message: "" });
     onClose();
   };
@@ -39,7 +39,7 @@ export default function BasicModal({ open, onClose }: BasicModalProps) {
       >
         <Box className={styles.box}>
           <div className={styles.header}>
-            <h3>Contact Us Now</h3>
+            <h3>{title}</h3>
             <CloseIcon onClick={onClose} className={styles.closeIcon} />
           </div>
           <form onSubmit={handleSubmit}>

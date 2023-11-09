@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "@/componentStyles/courses.module.css";
-import Image from "next/image";
 import BookIcon from "@/assets/icons/book.svg";
 import StudentIcon from "@/assets/icons/student.svg";
 import DifficultyIcon from "@/assets/icons/level.svg";
+import EmailModal from "./EmailModal";
 import useIsMobile from "../hooks_data/IsMobile";
 import { fetchCourses } from "../hooks_data/Data";
 type Props = {
@@ -32,7 +32,6 @@ export const Courses = () => {
       setLoading(false);
     } catch {}
   };
-  console.log(data);
   return (
     <div className={styles.courses_view}>
       <div className={styles.courses_header}>
@@ -85,8 +84,7 @@ function CourseBox({
   level,
   price,
 }: Props) {
-  // Encode the subject for the mailto link
-  const encodedSubject = encodeURIComponent(`${course_name} Application`);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <div className={styles.course_container}>
@@ -107,16 +105,19 @@ function CourseBox({
         </div>
       </div>
       <div className={styles.button_container}>
-        <a
-          className={styles.button}
-          href={`mailto:info@algopro.dev?subject=${encodedSubject}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => setModalOpen(true)}
+          className={styles.information_button}
         >
-          Start Course
-        </a>
+          Apply Now
+        </button>
         <p className={styles.price}>{price} €</p>
       </div>
+      <EmailModal
+        open={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        title={course_name + " Application"}
+      />
     </div>
   );
 }
