@@ -4,11 +4,12 @@ import LogoAcademy from "../assets/icons/LogoAcademy.svg";
 import styles from "@/componentStyles/navigation.module.css";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
+import EmailModal from "./EmailModal";
 type Props = {};
 
 const Navigation = (props: Props) => {
   const [showNavbar, setShowNavbar] = useState(false);
-
+  const [isModalOpen, setModalOpen] = useState(false);
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
@@ -29,6 +30,11 @@ const Navigation = (props: Props) => {
           <CloseIcon style={{ fontSize: "2rem" }} />
         )}
       </div>{" "}
+      <EmailModal
+        open={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Contact Us"
+      />
       <div
         className={
           showNavbar ? styles.right_container_active : styles.right_container
@@ -51,7 +57,13 @@ const Navigation = (props: Props) => {
             </a>
           </li>
           <li>
-            <a href="/" className={styles.menu_text} onClick={handleLinkClick}>
+            <a
+              className={styles.menu_text}
+              onClick={() => {
+                setModalOpen(true);
+                setShowNavbar(false);
+              }}
+            >
               Contact
             </a>
           </li>

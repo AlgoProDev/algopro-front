@@ -13,7 +13,11 @@
 }
 .information_text {
   line-height: 1.7;
-  font-size: 40px;
+  font-size: 34px;
+}
+.information_text span {
+  color: rgb(88, 88, 88);
+  font-size: 24px;
 }
 .information_button {
   margin-top: 50px;
@@ -50,7 +54,7 @@
 .circle_back {
   margin-top: 10px;
   width: 60%;
-  background-color: #e671e5;
+  background-color: #fff;
   border-radius: 50%;
 }
 .display_image {
@@ -92,6 +96,11 @@
   }
   .info_image_container {
     width: 100%;
+    padding-top: 4vh;
+  }
+  .info_image_container svg {
+    width: 300px;
+    height: 300px;
   }
   .information_container {
     width: 100%;
@@ -100,6 +109,9 @@
   }
   .information_text {
     font-size: 20px;
+  }
+  .information_text span {
+    font-size: 16px;
   }
   .information_button {
     width: auto;

@@ -32,7 +32,7 @@ export const fetchCourses = async (): Promise<Course[]> => {
       { headers }
     );
     const markdownTable = response.data.data.text;
-    // Replace markdown table formatting with CSV and parse it
+
     const csvTable = markdownTable.replace(/\|/g, ",").replace(/-{3,}/g, "");
     const parsedData = parse(csvTable, { header: true, skipEmptyLines: true });
     const courses: Course[] = [];
@@ -82,36 +82,43 @@ export const categories = [
     url: ["/", "/", "/"],
   },
 ];
+type People = { image: string; name: string; title: string };
 
-export const people = [
-  {
-    image: require("@/assets/images/person.jpg"),
-    name: "Olti Roka",
-    title: "Data Scientist",
-  },
-  {
-    image: require("@/assets/images/person.jpg"),
-    name: "Olti Roka",
-    title: "Data Scientist",
-  },
-  {
-    image: require("@/assets/images/person.jpg"),
-    name: "Olti Roka",
-    title: "Data Scientist",
-  },
-  {
-    image: require("@/assets/images/person.jpg"),
-    name: "Olti Roka",
-    title: "Data Scientist",
-  },
-  {
-    image: require("@/assets/images/person.jpg"),
-    name: "Olti Roka",
-    title: "Data Scientist",
-  },
-  {
-    image: require("@/assets/images/person.jpg"),
-    name: "Olti Roka",
-    title: "Data Scientist",
-  },
-];
+export const fetchPeople = async (): Promise<People[]> => {
+  const headers = {
+    Authorization: "Bearer ol_api_yqXI4zlfBaCaA5MZ6YXWpLaSSaONB4LdGoGLiJ",
+    "Content-Type": "application/json",
+  };
+
+  const payload = {
+    id: "tutors-H0qN4OvOGp",
+    shareId: "3a65f504-d54a-4ff5-86e3-1ee0a856c5e3",
+  };
+
+  try {
+    const response = await axios.post(
+      "https://corsproxy.io/?https://app.getoutline.com/api/documents.info",
+      payload,
+      { headers }
+    );
+    const markdownTable = response.data.data.text;
+
+    const csvTable = markdownTable.replace(/\|/g, ",").replace(/-{3,}/g, "");
+    const parsedData = parse(csvTable, { header: true, skipEmptyLines: true });
+    const people: People[] = [];
+    for (const row of parsedData.data as any) {
+      if (row[" Name "] && row[" Image "]) {
+        people.push({
+          image: row[" Image "],
+          name: row[" Title "],
+          title: row[" Name "],
+        });
+      }
+    }
+
+    return people;
+  } catch (error) {
+    console.error("There was an error fetching the courses:", error);
+    return [];
+  }
+};

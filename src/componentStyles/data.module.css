@@ -12,7 +12,7 @@
   border-radius: 20px;
 }
 .data_svg path {
-  fill: rgb(255, 0, 89) !important;
+  fill: #ff0059 !important;
 }
 .front_container {
   background-color: rgb(243, 236, 253);

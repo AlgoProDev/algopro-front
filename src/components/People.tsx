@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/componentStyles/people.module.css";
-import { people } from "../hooks_data/Data";
-
+import { fetchPeople } from "../hooks_data/Data";
+import { useState, useEffect } from "react";
 type Props = {
   image: any;
   name: string;
@@ -10,6 +10,19 @@ type Props = {
 };
 
 const People = () => {
+  const [people, setPeople] = useState<any>();
+  const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+    try {
+      const data = await fetchPeople();
+      setPeople(data);
+      setLoading(false);
+    } catch {}
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className={styles.people_container}>
       <div className={styles.people_information}>
@@ -29,7 +42,7 @@ const People = () => {
       <div className={styles.people_displays}>
         <div className={styles.people_background} />
         <div className={styles.people_cards}>
-          {people.slice(0, 6).map((person, index) => (
+          {people?.slice(0, 6).map((person: any, index: any) => (
             <PersonBox
               key={index}
               image={person.image}
@@ -45,7 +58,7 @@ const People = () => {
 function PersonBox({ image, name, title }: Props) {
   return (
     <div className={styles.container_box}>
-      <Image src={image} alt="" className={styles.image} />
+      <img src={image} alt="" className={styles.image} />
       <div className={styles.info}>
         <p>{name}</p>
         <p>{title}</p>

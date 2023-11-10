@@ -105,12 +105,22 @@ function CourseBox({
         </div>
       </div>
       <div className={styles.button_container}>
-        <button
-          onClick={() => setModalOpen(true)}
-          className={styles.information_button}
-        >
-          Apply Now
-        </button>
+        {course_name !== "Coming Soon" ? (
+          <button
+            onClick={() => setModalOpen(true)}
+            className={styles.information_button}
+          >
+            Apply Now
+          </button>
+        ) : (
+          <button
+            disabled
+            className={styles.information_button}
+            style={{ background: "#ddd", color: "#eee", borderColor: "#ddd" }}
+          >
+            Coming Soon
+          </button>
+        )}
         <p className={styles.price}>{price} €</p>
       </div>
       <EmailModal
