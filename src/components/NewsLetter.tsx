@@ -4,7 +4,7 @@ type Props = {};
 
 const NewsLetter = (props: Props) => {
   return (
-    <div className={styles.news_container}>
+    <section id="newsletter" className={styles.news_container}>
       <h1 className={styles.news_text}>
         Find out about the latest Courses with
         <span>&nbsp;Academy&nbsp;</span>Newsletter
@@ -22,7 +22,7 @@ const NewsLetter = (props: Props) => {
         </div>
         <div className={styles.news_decoration} />
       </div>
-    </div>
+    </section>
   );
 };
 

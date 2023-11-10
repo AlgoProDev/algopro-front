@@ -33,7 +33,7 @@ const Category = () => {
   }
   return (
     <>
-      <div className={styles.categories}>
+      <section id="home" className={styles.categories}>
         {categories.map((category, index) => (
           <CategoryBox
             key={index}
@@ -48,9 +48,10 @@ const Category = () => {
             onLogoClick={() => handleLogoClick(index)}
           />
         ))}
-      </div>
+      </section>
       {isMobile && activeCategory !== null && (
-        <div
+        <section
+          id="home"
           className={`${styles.button_drop} ${animationClass}`}
           ref={buttonDropRef}
         >
@@ -63,7 +64,7 @@ const Category = () => {
               {item}
             </a>
           ))}
-        </div>
+        </section>
       )}
     </>
   );
@@ -88,7 +89,7 @@ const CategoryBox = ({ logo, text, url, isActive, onLogoClick }: Props) => {
         <>
           {logo}
           {text.map((item, index) => (
-            <a key={item} href={url[index]} className={styles.button}>
+            <a key={item} className={styles.button}>
               {item}
             </a>
           ))}

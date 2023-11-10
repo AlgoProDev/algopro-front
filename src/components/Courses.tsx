@@ -33,7 +33,7 @@ export const Courses = () => {
     } catch {}
   };
   return (
-    <div className={styles.courses_view}>
+    <section id="courses" className={styles.courses_view}>
       <div className={styles.courses_header}>
         <div className={styles.course_title}>
           <p className={styles.course_square}>&#9632;&nbsp;&nbsp;&nbsp;</p>
@@ -66,7 +66,7 @@ export const Courses = () => {
               />
             ))}
       </div>
-    </div>
+    </section>
   );
 };
 

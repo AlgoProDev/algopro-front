@@ -24,7 +24,7 @@ const People = () => {
     getData();
   }, []);
   return (
-    <div className={styles.people_container}>
+    <section id="aboutus" className={styles.people_container}>
       <div className={styles.people_information}>
         <div className={styles.people_text}>
           <h1>
@@ -61,7 +61,7 @@ const People = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 function PersonBox({ image, name, title }: Props) {

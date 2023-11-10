@@ -10,7 +10,7 @@ const Preview = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className={styles.preview_container}>
+    <section className={styles.preview_container}>
       <div className={styles.information_container}>
         <h1 className={styles.information_text}>
           🎓 Elevate your tech career at AlgoPro!
@@ -34,7 +34,7 @@ const Preview = () => {
         onClose={() => setModalOpen(false)}
         title="Contact Us"
       />
-    </div>
+    </section>
   );
 };
 
