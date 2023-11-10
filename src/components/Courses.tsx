@@ -39,38 +39,32 @@ export const Courses = () => {
           <p className={styles.course_square}>&#9632;&nbsp;&nbsp;&nbsp;</p>
           <h3 className={styles.course_title_text}>Our Courses</h3>
         </div>
-        <a href="" className={styles.more_courses}>
-          All Courses
-        </a>
+        <p></p>
       </div>
       <div className={styles.course_box_container}>
         {isMobile && !loading
-          ? data
-              ?.slice(0, 3)
-              .map((course: any, index: number) => (
-                <CourseBox
-                  key={index}
-                  image={course.image}
-                  course_name={course.course_name}
-                  lessons={course.lessons}
-                  students={course.students}
-                  level={course.level}
-                  price={course.price}
-                />
-              ))
-          : data
-              ?.slice(0, 8)
-              .map((course: any, index: number) => (
-                <CourseBox
-                  key={index}
-                  image={course.image}
-                  course_name={course.course_name}
-                  lessons={course.lessons}
-                  students={course.students}
-                  level={course.level}
-                  price={course.price}
-                />
-              ))}
+          ? data?.map((course: any, index: number) => (
+              <CourseBox
+                key={index}
+                image={course.image}
+                course_name={course.course_name}
+                lessons={course.lessons}
+                students={course.students}
+                level={course.level}
+                price={course.price}
+              />
+            ))
+          : data?.map((course: any, index: number) => (
+              <CourseBox
+                key={index}
+                image={course.image}
+                course_name={course.course_name}
+                lessons={course.lessons}
+                students={course.students}
+                level={course.level}
+                price={course.price}
+              />
+            ))}
       </div>
     </div>
   );

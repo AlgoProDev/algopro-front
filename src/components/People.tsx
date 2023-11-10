@@ -31,18 +31,27 @@ const People = () => {
             <span> Our </span> Instructors
           </h1>
           <p>
-            At The Academy, We Strive To Bring Together The Best Professors For
-            The Best Courses
+            At AlgoPro Academy, our instructors are the cornerstone of our
+            learning community, distinguished by their academic credentials,
+            industry experience, and a profound commitment to student success.
+            They are experts in their fields, ensuring that the education we
+            offer is rich, current, and highly relevant.
+            <br />
+            <br />
+            Our teaching philosophy centers around engaging, student-focused
+            instruction, tailored to nurture individual potential and foster a
+            passion for learning. Each instructor brings a unique blend of
+            innovative teaching methods and personal mentorship, dedicated to
+            guiding students not just academically but also in their future
+            career paths. Join us to experience an educational journey shaped by
+            excellence and driven by passion.
           </p>
         </div>
-        <a href="" className={styles.people_button}>
-          All Instructors&nbsp;&nbsp;&nbsp;&gt;
-        </a>
       </div>
       <div className={styles.people_displays}>
         <div className={styles.people_background} />
         <div className={styles.people_cards}>
-          {people?.slice(0, 6).map((person: any, index: any) => (
+          {people?.map((person: any, index: any) => (
             <PersonBox
               key={index}
               image={person.image}
