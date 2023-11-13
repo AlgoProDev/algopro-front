@@ -82,7 +82,12 @@ function CourseBox({
 
   return (
     <div className={styles.course_container}>
-      <img src={image} alt="course-image" className={styles.course_image} />
+      <img
+        src={image}
+        alt="course-image"
+        className={styles.course_image}
+        width="300px"
+      />
       <h4 className={styles.course_name}>{course_name}</h4>
       <div className={styles.info}>
         <div className={styles.lessons}>
