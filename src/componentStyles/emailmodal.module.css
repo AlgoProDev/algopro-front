@@ -10,22 +10,31 @@
   padding: 40px;
 }
 
-.topInput {
+.form {
   display: flex;
-  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+.text_field {
+  flex: 1 1 45%;
+  min-width: 250px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
 }
+.header h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
 
 .closeIcon {
   cursor: pointer;
-}
-.inputText {
-  margin: 20px 0 20px 0;
-  flex: 1;
 }
 
 .bottomContainer {
@@ -34,9 +43,18 @@
   justify-content: space-between;
   margin: 20px 0 0 0;
 }
-
+.button_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.button_container .button:first-child {
+  color: black;
+  border-color: black;
+}
 .button {
   background-color: rgba(8, 8, 8, 0.8);
+  width: 45%;
 }
 .button:hover {
   background-color: rgba(8, 8, 8, 0.9);
@@ -48,9 +66,55 @@
 .otherContact a {
   color: rgba(30, 144, 255, 0.75);
 }
+.phone {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.phone p {
+  margin-top: 30px;
+}
+.phone a {
+  color: #7f00ff;
+}
+.phone p:first-child {
+  font-size: 20px;
+  color: grey;
+}
+
+.success_message {
+  width: 100%;
+  color: rgba(0, 128, 0, 1);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.error_message {
+  width: 100%;
+  color: rgba(255, 0, 0, 1);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  text-align: center;
+}
+
 @media screen and (max-width: 800px) {
   .box {
     max-width: 95%;
+    max-height: 95vh;
+    overflow: auto;
+  }
+  .form {
+    gap: 1px;
+  }
+  .header {
+    position: sticky;
+  }
+  .text_field {
+    flex-basis: 100%;
   }
   .topInput {
     flex-direction: column;

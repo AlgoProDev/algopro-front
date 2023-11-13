@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import styles from "@/componentStyles/emailmodal.module.css";
 import CloseIcon from "@mui/icons-material/Close";
+import EmailIcon from "@mui/icons-material/Email";
 interface BasicModalProps {
   open: boolean;
   onClose: () => void;
@@ -12,21 +13,49 @@ interface BasicModalProps {
 }
 
 export default function BasicModal({ open, onClose, title }: BasicModalProps) {
-  const [formData, setFormData] = React.useState({
-    email: "",
-    name: "",
-    message: "",
-  });
+  const [feedbackMessage, setFeedbackMessage] = React.useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const formData = {
+      subject: title,
+      from_email: data.get("email"),
+      message: `Contacted by ${data.get("name")} ${data.get("lastName")}
+Contact: ${data.get("email")} ${data.get("phone")}
+Message: ${data.get("message")}`,
+    };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormData({ email: "", name: "", message: "" });
-    onClose();
+    await fetch("https://oltirocka.pythonanywhere.com/api/send_email/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          response.json().then((json) => console.log(json));
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setFeedbackMessage("Email sent successfully");
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        setFeedbackMessage("Error with email");
+      });
   };
 
   return (
@@ -39,53 +68,97 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
       >
         <Box className={styles.box}>
           <div className={styles.header}>
-            <h3>{title}</h3>
+            <h3>
+              <EmailIcon />
+              {title}
+            </h3>
             <CloseIcon onClick={onClose} className={styles.closeIcon} />
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.topInput}>
-              <TextField
-                fullWidth
-                id="email"
-                name="email"
-                label="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className={styles.inputText}
-              />
-              <TextField
-                fullWidth
-                id="name"
-                name="name"
-                label="Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className={styles.inputText}
-              />
-            </div>
+          <p style={{ color: "grey", marginTop: "10px" }}>
+            Send us a message 😄
+          </p>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <TextField
+              label="Name"
+              name="name"
+              variant="outlined"
+              className={styles.text_field}
               fullWidth
-              id="message"
-              name="message"
-              label="Message"
-              multiline
-              rows={6}
-              value={formData.message}
-              onChange={handleInputChange}
-              className={styles.inputText}
+              margin="normal"
+              color="secondary"
             />
-            <div className={styles.bottomContainer}>
+            <TextField
+              label="Last Name"
+              name="lastName"
+              variant="outlined"
+              className={styles.text_field}
+              fullWidth
+              margin="normal"
+              color="secondary"
+            />
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              variant="outlined"
+              className={styles.text_field}
+              fullWidth
+              margin="normal"
+              color="secondary"
+            />
+            <TextField
+              label="Phone Number"
+              name="phone"
+              type="tel"
+              variant="outlined"
+              className={styles.text_field}
+              fullWidth
+              margin="normal"
+              color="secondary"
+            />
+            <TextField
+              label="Message"
+              name="message"
+              multiline
+              rows={4}
+              variant="outlined"
+              className={styles.message_field}
+              fullWidth
+              margin="normal"
+              color="secondary"
+            />{" "}
+            <div
+              className={
+                feedbackMessage.includes("Error")
+                  ? styles.error_message
+                  : styles.success_message
+              }
+            >
+              {feedbackMessage}
+            </div>
+            <div className={styles.button_container}>
+              <Button
+                variant="outlined"
+                onClick={onClose}
+                className={styles.button}
+                style={{ fontWeight: "700" }}
+              >
+                Cancel
+              </Button>
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className={styles.button}
+                style={{ fontWeight: "700" }}
               >
                 Submit
               </Button>
-              <p className={styles.otherContact}>
-                or Contact us at
-                <a href="tel:+38349474749"> +38349474749</a>
+            </div>
+            <div className={styles.phone}>
+              <p>or</p>
+              <p>
+                Contact us at <a href="tel:+38349474749">049474749</a>
               </p>
             </div>
           </form>
