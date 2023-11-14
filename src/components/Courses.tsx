@@ -92,15 +92,15 @@ function CourseBox({
       <div className={styles.info}>
         <div className={styles.lessons}>
           <BookIcon />
-          &nbsp; Lessons: {lessons}
+          &nbsp; {lessons}
         </div>
         <div className={styles.student}>
           <StudentIcon />
-          &nbsp; Students: {students}
+          &nbsp; {students}
         </div>
         <div className={styles.level}>
           <DifficultyIcon />
-          &nbsp; Level: {level}
+          &nbsp; {level}
         </div>
       </div>
       <div className={styles.button_container}>

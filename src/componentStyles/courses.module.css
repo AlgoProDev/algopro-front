@@ -63,8 +63,8 @@
 }
 
 .course_image {
-  max-width: 300px;
-  min-height: 200px;
+  max-width: 320px;
+  min-height: 220px;
   margin: 10px;
   object-fit: cover;
   border-radius: 10px;
@@ -85,7 +85,7 @@
   width: 96%;
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   color: rgba(8, 8, 8, 0.6);
 }
