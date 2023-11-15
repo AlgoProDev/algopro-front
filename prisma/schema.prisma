@@ -17,22 +17,24 @@ model Course {
   students  String
   level     String
   desc      String
+  content   String   @default("None")
+  tutor     String   @default("None")
   price     Int      @default(200)
+  sale      Int?
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  Module    Module[]
 }
 
-model Module {
-  id          String   @id @default(cuid())
-  title       String
+model Curriculum{
+  id String @id @default(cuid())
+  module String 
+  order Int 
+  sub_module String
+  title String
   description String
-  courseId    String   @map("course_id")
-  course      Course   @relation(fields: [courseId], references: [id])
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 }
-
 model People {
   id        String   @id @default(cuid())
   title     String

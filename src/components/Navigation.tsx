@@ -3,28 +3,23 @@ import React, { useState } from "react";
 import LogoAcademy from "../assets/icons/LogoAcademy.svg";
 import styles from "@/componentStyles/navigation.module.css";
 import EmailModal from "./EmailModal";
+import Link from "next/link";
 
-const Navigation = () => {
+const Navigation = ({ show, style }: any) => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className={styles.header_container}>
+    <div style={style ? {} : { width: "90%" }} className={styles.header_container}>
       <div className={styles.left_container}>
-        <LogoAcademy className={styles.logo} />
+        <Link href="/">
+          <LogoAcademy className={styles.logo} />
+        </Link>
       </div>{" "}
       <div className={styles.menu_icon}></div>
-      <EmailModal
-        open={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        title="Contact Us"
-      />
-      <div
-        className={
-          showNavbar ? styles.right_container_active : styles.right_container
-        }
-      >
-        <ul>
+      <EmailModal open={isModalOpen} onClose={() => setModalOpen(false)} title="Contact Us" />
+      <div className={showNavbar ? styles.right_container_active : styles.right_container}>
+        <ul style={{ visibility: show ? "visible" : "hidden" }}>
           <li>
             <a href="#home" className={styles.menu_text}>
               Fillimi

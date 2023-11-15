@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className={styles.home}>
-      <Navigation />
+      <Navigation style={true} show={true} />
       <Category />
       <Preview />
       <Courses />
