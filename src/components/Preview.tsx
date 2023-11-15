@@ -10,13 +10,18 @@ const Preview = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <section className={styles.preview_container}>
+    <section id="home" className={styles.preview_container}>
       <div className={styles.information_container}>
         <h1 className={styles.information_text}>
-          🎓 Elevate your tech career at AlgoPro!
-          <br /> <span>Explore our expert-led Engineering courses.</span>
-          <br />
-          <span>Join our community and unlock your potential.</span>
+          🎓 Fillo karrierën si Programer në AlgoPro!
+          <br />{" "}
+          <div>
+            Zbuloni kurset tona inovative të Programimit, të udhëhequra nga
+            specialistë të fushës.
+            <br />
+            Bashkohuni në komunitetin tonë dhe hapni dyert e mundësive të reja
+            për zhvillimin profesional.
+          </div>
         </h1>
         <div className={styles.arrow_container}>
           <Arrow1 className={styles.arrow1} />
@@ -25,7 +30,7 @@ const Preview = () => {
           onClick={() => setModalOpen(true)}
           className={styles.information_button}
         >
-          Contact Us Now
+          Na kontakto
         </button>
       </div>
       <InformationImage />{" "}

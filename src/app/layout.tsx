@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "AlgoPro Academy",
-  description: " Elevate your tech career at AlgoPro!",
+  description: "Elevate your tech career at AlgoPro!",
 };
 
 export default function RootLayout({

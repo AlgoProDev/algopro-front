@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+
 import styles from "@/componentStyles/courses.module.css";
 import BookIcon from "@/assets/icons/book.svg";
 import StudentIcon from "@/assets/icons/student.svg";
 import DifficultyIcon from "@/assets/icons/level.svg";
-import EmailModal from "./EmailModal";
 import useIsMobile from "../hooks_data/IsMobile";
-import { fetchCourses } from "../hooks_data/Data";
+
 type Props = {
   image: any;
   course_name: string;
@@ -14,6 +15,7 @@ type Props = {
   students: string;
   level: string;
   price: string;
+  url: String;
 };
 
 export const Courses = () => {
@@ -23,32 +25,38 @@ export const Courses = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setIsClient(true);
-    getData();
+    fetchCourses();
   }, []);
-  const getData = async () => {
+  async function fetchCourses() {
     try {
-      const courses = await fetchCourses();
-      setData(courses);
+      const response = await fetch("/api/courses");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data: any = await response.json();
+      setData(data);
+      console.log(data[0].img_url);
       setLoading(false);
-    } catch {}
-  };
+    } catch (error) {
+      console.error("There was an error fetching the courses:", error);
+    }
+  }
   return (
     <section id="courses" className={styles.courses_view}>
-      <div className={styles.courses_header}>
-        <div className={styles.course_title}>
-          <p className={styles.course_square}>&#9632;&nbsp;&nbsp;&nbsp;</p>
-          <h3 className={styles.course_title_text}>Our Courses</h3>
-        </div>
-        <p></p>
+      <div className={styles.course_title}>
+        <h3 className={styles.course_title_text}>
+          <span>Trajnimet</span> tona
+        </h3>
       </div>
       <div className={styles.course_box_container}>
         {isMobile && !loading
           ? data?.map((course: any, index: number) => (
               <CourseBox
                 key={index}
-                image={course.image}
-                course_name={course.course_name}
-                lessons={course.lessons}
+                url={course.id}
+                image={course.img_url}
+                course_name={course.title}
+                lessons={course.time}
                 students={course.students}
                 level={course.level}
                 price={course.price}
@@ -57,9 +65,10 @@ export const Courses = () => {
           : data?.map((course: any, index: number) => (
               <CourseBox
                 key={index}
-                image={course.image}
-                course_name={course.course_name}
-                lessons={course.lessons}
+                url={course.id}
+                image={course.img_url}
+                course_name={course.title}
+                lessons={course.time}
                 students={course.students}
                 level={course.level}
                 price={course.price}
@@ -70,24 +79,10 @@ export const Courses = () => {
   );
 };
 
-function CourseBox({
-  image,
-  course_name,
-  lessons,
-  students,
-  level,
-  price,
-}: Props) {
-  const [isModalOpen, setModalOpen] = useState(false);
-
+function CourseBox({ image, course_name, lessons, students, level, price, url }: Props) {
   return (
     <div className={styles.course_container}>
-      <img
-        src={image}
-        alt="course-image"
-        className={styles.course_image}
-        width="300px"
-      />
+      <img src={image} alt="course-image" className={styles.course_image} width="300px" />
       <h4 className={styles.course_name}>{course_name}</h4>
       <div className={styles.info}>
         <div className={styles.lessons}>
@@ -105,28 +100,18 @@ function CourseBox({
       </div>
       <div className={styles.button_container}>
         {course_name !== "Coming Soon" ? (
-          <button
-            onClick={() => setModalOpen(true)}
-            className={styles.information_button}
-          >
-            Apply Now
-          </button>
+          <Link href={"/trajnimet/" + url} className={styles.information_button}>
+            Më shumë
+          </Link>
         ) : (
           <button
             disabled
             className={styles.information_button}
-            style={{ background: "#ddd", color: "#eee", borderColor: "#ddd" }}
-          >
+            style={{ background: "#ddd", color: "#eee", borderColor: "#ddd" }}>
             Coming Soon
           </button>
         )}
-        <p className={styles.price}>{price} €</p>
       </div>
-      <EmailModal
-        open={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        title={course_name + " Application"}
-      />
     </div>
   );
 }

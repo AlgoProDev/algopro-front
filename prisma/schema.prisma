@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Course {
+  id        String   @id @default(cuid())
+  order_id  Int      @default(0)
+  title     String
+  img_url   String
+  time      String
+  students  String
+  level     String
+  desc      String
+  price     Int      @default(200)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  Module    Module[]
+}
+
+model Module {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  courseId    String   @map("course_id")
+  course      Course   @relation(fields: [courseId], references: [id])
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+}
+
+model People {
+  id        String   @id @default(cuid())
+  title     String
+  img_url   String
+  name      String
+  desc      String
+  type      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}

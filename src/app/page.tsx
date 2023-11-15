@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./page.module.css";
 import Navigation from "@/components/Navigation";
 import Category from "@/components/Category";

@@ -56,11 +56,7 @@ const Category = () => {
           ref={buttonDropRef}
         >
           {categories[activeCategory].text.map((item, index) => (
-            <a
-              key={index}
-              href={categories[activeCategory].url[index]}
-              className={styles.button}
-            >
+            <a key={index} className={styles.button}>
               {item}
             </a>
           ))}

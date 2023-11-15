@@ -1,7 +1,5 @@
 import React from "react";
-import Image from "next/image";
 import styles from "@/componentStyles/people.module.css";
-import { fetchPeople } from "../hooks_data/Data";
 import { useState, useEffect } from "react";
 type Props = {
   image: any;
@@ -13,38 +11,43 @@ const People = () => {
   const [people, setPeople] = useState<any>();
   const [loading, setLoading] = useState(true);
 
-  const getData = async () => {
+  async function fetchPeople() {
     try {
-      const data = await fetchPeople();
+      const response = await fetch("/api/people");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data: any = await response.json();
       setPeople(data);
       setLoading(false);
-    } catch {}
-  };
+    } catch (error) {
+      console.error("There was an error fetching the courses:", error);
+    }
+  }
   useEffect(() => {
-    getData();
+    fetchPeople();
   }, []);
   return (
     <section id="aboutus" className={styles.people_container}>
       <div className={styles.people_information}>
         <div className={styles.people_text}>
           <h1>
-            <span> Our </span> Instructors
+            <span> Intruktorët </span> tanë
           </h1>
           <p>
-            At AlgoPro Academy, our instructors are the cornerstone of our
-            learning community, distinguished by their academic credentials,
-            industry experience, and a profound commitment to student success.
-            They are experts in their fields, ensuring that the education we
-            offer is rich, current, and highly relevant.
+            Në AlgoPro Academy, instruktorët tanë janë themeli i komunitetit tonë të mësimit, të
+            dalluar për kredencialet e tyre akademike, përvojën në industrinë, dhe angazhimin e
+            thellë ndaj suksesit të studentëve. Ata janë ekspertë në fushat e tyre, duke siguruar që
+            edukimi që ofrojmë është i pasur, aktual dhe shumë i relevant.
             <br />
             <br />
-            Our teaching philosophy centers around engaging, student-focused
-            instruction, tailored to nurture individual potential and foster a
-            passion for learning. Each instructor brings a unique blend of
-            innovative teaching methods and personal mentorship, dedicated to
-            guiding students not just academically but also in their future
-            career paths. Join us to experience an educational journey shaped by
-            excellence and driven by passion.
+            Filozofia jonë mësimore është e qendruar rreth një mësimdhënieje angazhuese, të fokusuar
+            tek studenti, e përshtatur për të kultivuar potencialin individual dhe për të nxitur
+            pasionin për të mësuar. Çdo instruktor sjell një përzierje unike të metodash inovative
+            të mësimdhënies dhe mentorimit personal, të dedikuar për të udhëzuar studentët jo vetëm
+            akademikisht, por edhe në rrugëtimet e tyre të ardhshme profesionale. Bashkohuni me ne
+            për të përjetuar një udhëtim arsimor të formësuar nga përsosmëria dhe të drejtuar nga
+            pasioni.
           </p>
         </div>
       </div>
@@ -52,12 +55,7 @@ const People = () => {
         <div className={styles.people_background} />
         <div className={styles.people_cards}>
           {people?.map((person: any, index: any) => (
-            <PersonBox
-              key={index}
-              image={person.image}
-              name={person.name}
-              title={person.title}
-            />
+            <PersonBox key={index} image={person.img_url} name={person.name} title={person.title} />
           ))}
         </div>
       </div>

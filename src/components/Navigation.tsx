@@ -27,17 +27,17 @@ const Navigation = () => {
         <ul>
           <li>
             <a href="#home" className={styles.menu_text}>
-              Home
+              Fillimi
             </a>
           </li>
           <li>
             <a href="#courses" className={styles.menu_text}>
-              Courses
+              Trajnimet
             </a>
           </li>
           <li>
             <a href="#aboutus" className={styles.menu_text}>
-              About Us
+              Rreth Nesh
             </a>
           </li>
           <li>
