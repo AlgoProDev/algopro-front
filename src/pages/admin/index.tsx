@@ -1,6 +1,7 @@
 import { useSession, getSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import styles from "@/pages/admin/index.module.css";
 
 const Admin: React.FC = () => {
   const { data: session, status } = useSession();

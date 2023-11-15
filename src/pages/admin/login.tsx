@@ -1,7 +1,7 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-
+import styles from "@/pages/admin/login.module.css";
 const AdminLogin: React.FC = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -37,11 +37,15 @@ const AdminLogin: React.FC = () => {
   if (status === "loading") return <div>Loading...</div>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="email" type="email" placeholder="Email" />
-      <input name="password" type="password" placeholder="Password" />
-      <button type="submit">Log in</button>
-    </form>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input name="email" type="email" placeholder="Email" className={styles.input} />
+        <input name="password" type="password" placeholder="Password" className={styles.input} />
+        <button type="submit" className={styles.button}>
+          Log in
+        </button>
+      </form>
+    </div>
   );
 };
 
