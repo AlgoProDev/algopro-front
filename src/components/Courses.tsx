@@ -31,12 +31,10 @@ export const Courses = () => {
     try {
       const response = await fetch("/api/courses");
       if (!response.ok) {
-        console.log(response);
         throw new Error("Network response was not ok");
       }
       const data: any = await response.json();
       setData(data);
-      console.log(data[0].img_url);
       setLoading(false);
     } catch (error) {
       console.error("There was an error fetching the courses:", error);

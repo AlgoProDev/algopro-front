@@ -2,14 +2,37 @@
 import React, { useState, useRef } from "react";
 import styles from "@/componentStyles/category.module.css";
 import useIsMobile from "../hooks_data/IsMobile";
-import { categories } from "../hooks_data/Data";
-
+import BackendLogo from "@/assets/icons/backend-icon.svg";
+import DataLogo from "@/assets/icons/data-icon.svg";
+import FrontendLogo from "@/assets/icons/front-icon.svg";
 const Category = () => {
   const isMobile = useIsMobile();
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
   const [animationClass, setAnimationClass] = useState("");
   const buttonDropRef = useRef<HTMLDivElement>(null);
-
+  const categories = [
+    {
+      cont_style: styles.back_container,
+      svg_style: styles.back_svg,
+      Logo: BackendLogo,
+      text: ["Python", "Java", "Node.js"],
+      url: ["/", "/", "/"],
+    },
+    {
+      cont_style: styles.data_container,
+      svg_style: styles.data_svg,
+      Logo: DataLogo,
+      text: ["Data Science", "Data Engineering"],
+      url: ["/", "/"],
+    },
+    {
+      cont_style: styles.front_container,
+      svg_style: styles.front_svg,
+      Logo: FrontendLogo,
+      text: ["React", "Native", "Angular"],
+      url: ["/", "/", "/"],
+    },
+  ];
   function handleLogoClick(index: number) {
     if (activeCategory !== null) {
       if (activeCategory === index) {
@@ -53,8 +76,7 @@ const Category = () => {
         <section
           id="home"
           className={`${styles.button_drop} ${animationClass}`}
-          ref={buttonDropRef}
-        >
+          ref={buttonDropRef}>
           {categories[activeCategory].text.map((item, index) => (
             <a key={index} className={styles.button}>
               {item}
