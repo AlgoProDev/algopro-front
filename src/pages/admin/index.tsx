@@ -15,7 +15,13 @@ const Admin: React.FC = () => {
 
   if (status === "loading" || !session) return <div>Loading...</div>;
 
-  return <div>Welcome to the admin panel!</div>;
+  return (
+    <div>
+      <iframe
+        src="http://localhost:5555"
+        style={{ width: "100vw", height: "100vh", border: "none" }}></iframe>
+    </div>
+  );
 };
 
 export const getServerSideProps = async (context: any) => {

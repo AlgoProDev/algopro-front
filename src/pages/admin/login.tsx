@@ -34,7 +34,7 @@ const AdminLogin: React.FC = () => {
     }
   };
 
-  if (status === "loading") return <div>Loading...</div>;
+  if (status === "loading") return <div className={styles.container}>Loading...</div>;
 
   return (
     <div className={styles.container}>
