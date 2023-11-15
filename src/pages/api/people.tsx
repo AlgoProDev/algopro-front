@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const courses = await prisma.people.findMany();
       res.status(200).json(courses);
     } catch (error) {
-      res.status(500).json({ error: "Error fetching the courses" });
+      res.status(500).json({ error: "Error fetching the people" + error });
     }
   } else {
     res.setHeader("Allow", ["GET"]);

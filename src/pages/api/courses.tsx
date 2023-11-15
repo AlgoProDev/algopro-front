@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
       res.status(200).json(courses);
     } catch (error) {
-      res.status(500).json({ error: "Error fetching the courses" });
+      res.status(500).json({ error: "Error fetching the courses" + error });
     }
   } else {
     res.setHeader("Allow", ["GET"]);

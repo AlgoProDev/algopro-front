@@ -31,6 +31,7 @@ export const Courses = () => {
     try {
       const response = await fetch("/api/courses");
       if (!response.ok) {
+        console.log(response);
         throw new Error("Network response was not ok");
       }
       const data: any = await response.json();
