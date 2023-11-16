@@ -12,9 +12,13 @@ import "react-toastify/dist/ReactToastify.css";
 import Button from "@mui/material/Button";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
+import Loader from "@/components/LoadingIcon";
 
 export default function Trajnimet() {
-  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [courseID, setCourseID] = useState<any>();
+  const router = useRouter();
+
   const notify = (promise: Promise<any>, successText: string, errorText: string) => {
     toast.promise(
       promise,
@@ -30,14 +34,6 @@ export default function Trajnimet() {
       },
     );
   };
-
-  const [courseID, setCourseID] = useState<any>();
-  const router = useRouter();
-  useEffect(() => {
-    if (router.isReady) {
-      setCourseID(FormatText(router.query.tag));
-    }
-  });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -75,150 +71,173 @@ export default function Trajnimet() {
       console.error("Error sending email", error);
     }
   };
+
+  useEffect(() => {
+    if (router.isReady) {
+      setCourseID(FormatText(router.query.tag));
+      setLoading(false);
+    }
+  });
+
   return (
-    <div className={styles.main_container}>
-      <Navigation style={false} show={false} />
-      <form className={styles.form_container} onSubmit={handleSubmit}>
-        <ToastContainer />
+    <>
+      {loading ? (
+        <div
+          style={{
+            width: "100%",
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+          <Loader lottiePath="../loading.json" width={300} height={300} />
+        </div>
+      ) : (
+        <div className={styles.main_container}>
+          <Navigation style={false} show={false} />
+          <form className={styles.form_container} onSubmit={handleSubmit}>
+            <ToastContainer />
 
-        <h2>Form e aplikimit për {courseID}</h2>
-        <div>
-          <TextField
-            name="name"
-            label="Emri"
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            color="secondary"
-          />
-          <TextField
-            label="Mbiemri"
-            variant="outlined"
-            name="lastName"
-            margin="normal"
-            fullWidth
-            color="secondary"
-          />
-        </div>
-        <div>
-          <TextField
-            label="Email"
-            variant="outlined"
-            margin="normal"
-            name="email"
-            fullWidth
-            type="email"
-            color="secondary"
-          />
-          <TextField
-            label="Numri i telefonit"
-            variant="outlined"
-            margin="normal"
-            name="phone"
-            fullWidth
-            type="tel"
-            color="secondary"
-          />
-        </div>
-        <div>
-          <FormControl component="fieldset" margin="normal" fullWidth color="secondary">
-            <FormLabel component="legend" color="secondary">
-              Punoni aktualisht?
-            </FormLabel>
-            <RadioGroup row name="work">
-              <FormControlLabel
-                value="po"
+            <h2>Form e aplikimit për {courseID}</h2>
+            <div>
+              <TextField
+                name="name"
+                label="Emri"
+                variant="outlined"
+                margin="normal"
+                fullWidth
                 color="secondary"
-                control={<Radio color="secondary" />}
-                label="Po"
               />
-              <FormControlLabel
-                value="jo"
+              <TextField
+                label="Mbiemri"
+                variant="outlined"
+                name="lastName"
+                margin="normal"
+                fullWidth
                 color="secondary"
-                control={<Radio color="secondary" />}
-                label="Jo"
               />
-            </RadioGroup>
-          </FormControl>
-          <FormControl component="fieldset" color="secondary" margin="normal" fullWidth>
-            <FormLabel color="secondary" component="legend">
-              Student?
-            </FormLabel>
-            <RadioGroup row name="student">
-              <FormControlLabel
+            </div>
+            <div>
+              <TextField
+                label="Email"
+                variant="outlined"
+                margin="normal"
+                name="email"
+                fullWidth
+                type="email"
                 color="secondary"
-                value="po"
-                control={<Radio color="secondary" />}
-                label="Po"
               />
-              <FormControlLabel
+              <TextField
+                label="Numri i telefonit"
+                variant="outlined"
+                margin="normal"
+                name="phone"
+                fullWidth
+                type="tel"
                 color="secondary"
-                value="jo"
-                control={<Radio color="secondary" />}
-                label="Jo"
               />
-            </RadioGroup>
-          </FormControl>
-        </div>
-        <div>
-          <FormControl color="secondary" fullWidth margin="normal">
-            <FormLabel>Lloji i kontaktit të preferuar</FormLabel>
-            <RadioGroup row name="contact">
-              <FormControlLabel
-                color="secondary"
-                value="viber"
-                control={<Radio color="secondary" />}
-                label="Viber"
-              />
-              <FormControlLabel
-                color="secondary"
-                value="whatsapp"
-                control={<Radio color="secondary" />}
-                label="Whatsapp"
-              />
-            </RadioGroup>
-          </FormControl>
+            </div>
+            <div>
+              <FormControl component="fieldset" margin="normal" fullWidth color="secondary">
+                <FormLabel component="legend" color="secondary">
+                  Punoni aktualisht?
+                </FormLabel>
+                <RadioGroup row name="work">
+                  <FormControlLabel
+                    value="po"
+                    color="secondary"
+                    control={<Radio color="secondary" />}
+                    label="Po"
+                  />
+                  <FormControlLabel
+                    value="jo"
+                    color="secondary"
+                    control={<Radio color="secondary" />}
+                    label="Jo"
+                  />
+                </RadioGroup>
+              </FormControl>
+              <FormControl component="fieldset" color="secondary" margin="normal" fullWidth>
+                <FormLabel color="secondary" component="legend">
+                  Student?
+                </FormLabel>
+                <RadioGroup row name="student">
+                  <FormControlLabel
+                    color="secondary"
+                    value="po"
+                    control={<Radio color="secondary" />}
+                    label="Po"
+                  />
+                  <FormControlLabel
+                    color="secondary"
+                    value="jo"
+                    control={<Radio color="secondary" />}
+                    label="Jo"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </div>
+            <div>
+              <FormControl color="secondary" fullWidth margin="normal">
+                <FormLabel>Lloji i kontaktit të preferuar</FormLabel>
+                <RadioGroup row name="contact">
+                  <FormControlLabel
+                    color="secondary"
+                    value="viber"
+                    control={<Radio color="secondary" />}
+                    label="Viber"
+                  />
+                  <FormControlLabel
+                    color="secondary"
+                    value="whatsapp"
+                    control={<Radio color="secondary" />}
+                    label="Whatsapp"
+                  />
+                </RadioGroup>
+              </FormControl>
 
-          <FormControl color="secondary" fullWidth margin="normal">
-            <FormLabel>Vendi juaj</FormLabel>
-            <RadioGroup color="secondary" row name="location">
-              <FormControlLabel
-                color="secondary"
-                value="kosova"
-                control={<Radio color="secondary" />}
-                label="Kosova"
-              />
-              <FormControlLabel
-                color="secondary"
-                value="shqiperia"
-                control={<Radio color="secondary" />}
-                label="Shqipëria"
-              />
-              <FormControlLabel
-                color="secondary"
-                value="macedonia"
-                control={<Radio color="secondary" />}
-                label="Macedonia"
-              />
-            </RadioGroup>
-          </FormControl>
+              <FormControl color="secondary" fullWidth margin="normal">
+                <FormLabel>Vendi juaj</FormLabel>
+                <RadioGroup color="secondary" row name="location">
+                  <FormControlLabel
+                    color="secondary"
+                    value="kosova"
+                    control={<Radio color="secondary" />}
+                    label="Kosova"
+                  />
+                  <FormControlLabel
+                    color="secondary"
+                    value="shqiperia"
+                    control={<Radio color="secondary" />}
+                    label="Shqipëria"
+                  />
+                  <FormControlLabel
+                    color="secondary"
+                    value="macedonia"
+                    control={<Radio color="secondary" />}
+                    label="Macedonia"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </div>
+            <TextField
+              label="Arsyja e aplikimit tuaj"
+              variant="outlined"
+              margin="normal"
+              rows={4}
+              fullWidth
+              multiline
+              name="message"
+              color="secondary"
+            />
+            <Button type="submit" variant="contained" color="secondary">
+              Apliko
+            </Button>
+          </form>
+          <Footer />
         </div>
-        <TextField
-          label="Arsyja e aplikimit tuaj"
-          variant="outlined"
-          margin="normal"
-          rows={4}
-          fullWidth
-          multiline
-          name="message"
-          color="secondary"
-        />
-        <Button type="submit" variant="contained" color="secondary">
-          Apliko
-        </Button>
-      </form>
-      <Footer />
-    </div>
+      )}
+    </>
   );
 }
 
