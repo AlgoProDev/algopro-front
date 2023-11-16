@@ -5,6 +5,7 @@ import styles from "@/pages/trajnimet/[tag]/index.module.css";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 
 export default function Trajnimet() {
   const router = useRouter();
@@ -48,7 +49,7 @@ export default function Trajnimet() {
       <div className={styles.main_container}>
         <Navigation style={false} show={false} />
         <div className={styles.content_container}>
-          <h1 className={styles.title}>{course.courses.title}</h1>
+          <h1 className={styles.title}>Trajnimi {course.courses.title}</h1>
           <p className={styles.description}>{course.courses.content}</p>
           <div className={styles.information_container}>
             <div>
@@ -93,7 +94,26 @@ export default function Trajnimet() {
                 )}
               </ul>
             </div>
-            <div></div>
+            <div>
+              <PermContactCalendarIcon
+                style={{ fontSize: "128px", color: "#9d55eb" }}
+                className={styles.icon}
+              />
+              <h2 className={styles.konsultohuni}>Konsultohuni</h2>
+              <p className={styles.consult_desc}>
+                Aplikoni për konsultimin falas duke përdorur formularin tonë të aplikimit. Jepni
+                disa informacione për veten tuaj, kështu që ne kemi mundësinë të mësojmë më shumë
+                rreth situatës dhe objektivave tuaja aktuale.
+                <br />
+                <br /> Pas sigurimit të të dhënave tuaja të kontaktit, ne do të ju kotaktojme për
+                një bisedë përmes telefonit. Ne do të zbulojmë nëse përshtateni në programin tonë.
+                Në rast se përputhemi, ne do të rregullojmë thirrjen vijuese konsultuese.
+              </p>
+              <a href={course.courses.img_url} className={styles.consult_button}>
+                {" "}
+                Konsultim Falas
+              </a>
+            </div>
           </div>
         </div>
         <Footer />

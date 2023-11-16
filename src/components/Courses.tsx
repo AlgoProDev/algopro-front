@@ -86,11 +86,11 @@ function CourseBox({ image, course_name, lessons, students, level, price, url }:
       <div className={styles.info}>
         <div className={styles.lessons}>
           <BookIcon />
-          &nbsp; {lessons}
+          &nbsp; {lessons} orë
         </div>
         <div className={styles.student}>
           <StudentIcon />
-          &nbsp; {students}
+          &nbsp; {students} studentë
         </div>
         <div className={styles.level}>
           <DifficultyIcon />

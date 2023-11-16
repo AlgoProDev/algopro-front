@@ -15,10 +15,12 @@
   align-items: center;
 }
 .title {
+  width: 100%;
   margin-top: 15vh;
+  align-self: left;
 }
 .description {
-  background-color: #eee;
+  background-color: #f0f0f0;
   padding: 50px;
   width: 100%;
   font-size: 16px;
@@ -26,11 +28,22 @@
 .information_container {
   width: 100%;
   display: flex;
-  align-items: center;
+  margin-top: 5vh;
+  align-items: flex-start;
   justify-content: space-between;
 }
 .information_container > div {
-  width: 45%;
+  width: 55%;
+}
+.information_container > div:last-child {
+  width: 35%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px #ddd solid;
+  padding: 60px 20px 60px 20px;
 }
 .modules {
   flex: 1;
@@ -57,7 +70,6 @@
   padding: 30px 20px 10px 20px;
 }
 .button_container:last-child {
-  padding: 30px 20px 10px 20px;
   border: 1px #ddd solid;
 }
 .button {
@@ -65,6 +77,7 @@
   background: none;
   border: none;
   padding: 0;
+  width: 100%;
   margin: 0;
   cursor: pointer;
   display: flex;
@@ -107,4 +120,25 @@
 .sub_modules:hover {
   transition: color 0.4s ease-in-out;
   color: #5200aa;
+}
+
+.konsultohuni {
+  font-size: 24px;
+}
+.image {
+  border-radius: 8px 8px 0 0;
+}
+.consult_desc {
+  width: 90%;
+  text-align: center;
+  font-size: 16px;
+}
+.consult_button {
+  background-color: #9d55eb;
+  padding: 12px 24px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 18px;
 }
