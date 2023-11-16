@@ -8,17 +8,17 @@ import { Courses } from "@/components/Courses";
 import People from "@/components/People";
 import NewsLetter from "@/components/NewsLetter";
 import Footer from "@/components/Footer";
-import TrefoilLoader from "@/components/LoadingIcon";
+import Loader from "@/components/LoadingIcon";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
-  }, 3000);
+  }, 1500);
   return (
     <>
       <div className={styles.loader} style={loading ? {} : { display: "none" }}>
-        <TrefoilLoader lottiePath="loading.json" width={300} height={300} />
+        <Loader lottiePath="loading.json" width={300} height={300} />
       </div>
       <div className={styles.home} style={loading ? { display: "none" } : {}}>
         <Navigation style={true} show={true} />

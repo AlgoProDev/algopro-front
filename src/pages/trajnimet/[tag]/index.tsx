@@ -6,6 +6,7 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
+import Loader from "@/components/LoadingIcon";
 
 export default function Trajnimet() {
   const router = useRouter();
@@ -122,6 +123,17 @@ export default function Trajnimet() {
       </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div
+        style={{
+          width: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <Loader lottiePath="../loading.json" width={300} height={300} />
+      </div>
+    );
   }
 }

@@ -7,7 +7,7 @@ interface LottieAnimationProps {
   width?: number | string;
 }
 
-const LottieAnimation: React.FC<LottieAnimationProps> = ({ lottiePath, height, width }) => {
+const Loader: React.FC<LottieAnimationProps> = ({ lottiePath, height, width }) => {
   const animationContainer = useRef<HTMLDivElement>(null);
   let anim: AnimationItem | null = null;
 
@@ -30,4 +30,4 @@ const LottieAnimation: React.FC<LottieAnimationProps> = ({ lottiePath, height, w
   return <div ref={animationContainer} style={{ height, width }} />;
 };
 
-export default LottieAnimation;
+export default Loader;
