@@ -6,7 +6,13 @@
   overflow-x: hidden;
 }
 /* End */
-
+.loader {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Phone Sizing */
 @media screen and (max-width: 480px) {
   .preview_container {

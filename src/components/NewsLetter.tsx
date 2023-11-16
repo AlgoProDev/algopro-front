@@ -11,12 +11,8 @@ const NewsLetter = () => {
       message: `${data.get("email")} signed to newsletter`,
     };
 
-    const button = document.getElementById(
-      "newsletter-button"
-    ) as HTMLButtonElement;
-    const input = document.getElementById(
-      "newsletter-input"
-    ) as HTMLInputElement;
+    const button = document.getElementById("newsletter-button") as HTMLButtonElement;
+    const input = document.getElementById("newsletter-input") as HTMLInputElement;
 
     await fetch("https://oltirocka.pythonanywhere.com/api/send_email/", {
       method: "POST",

@@ -13,6 +13,7 @@ model Course {
   order_id  Int      @default(0)
   title     String
   img_url   String
+  emoji     String?
   time      String
   students  String
   level     String

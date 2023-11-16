@@ -49,7 +49,9 @@ export default function Trajnimet() {
       <div className={styles.main_container}>
         <Navigation style={false} show={false} />
         <div className={styles.content_container}>
-          <h1 className={styles.title}>Trajnimi {course.courses.title}</h1>
+          <h1 className={styles.title}>
+            {course.courses.emoji} Trajnimi {course.courses.title}
+          </h1>
           <p className={styles.description}>{course.courses.content}</p>
           <div className={styles.information_container}>
             <div>
