@@ -11,6 +11,7 @@ import Loader from "@/components/LoadingIcon";
 export default function Trajnimet() {
   const router = useRouter();
   const [course, setCourse] = useState<any>();
+  const [courseID, setCourseID] = useState<any>();
   const [loading, setLoading] = useState(true);
   const [openModule, setOpenModule] = useState<string | null>(null);
   const toggleModule = (module: string) => {
@@ -34,6 +35,7 @@ export default function Trajnimet() {
       }
       const data = await response.json();
       setCourse(data);
+      setCourseID(courseId);
       setLoading(false);
     } catch (error) {
       console.error("There was an error fetching the course:", error);
@@ -112,7 +114,7 @@ export default function Trajnimet() {
                 një bisedë përmes telefonit. Ne do të zbulojmë nëse përshtateni në programin tonë.
                 Në rast se përputhemi, ne do të rregullojmë thirrjen vijuese konsultuese.
               </p>
-              <a href={course.courses.img_url} className={styles.consult_button}>
+              <a href={"/apply/" + courseID} className={styles.consult_button}>
                 {" "}
                 Konsultim Falas
               </a>
