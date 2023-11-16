@@ -138,7 +138,7 @@ export default function Trajnimet() {
                       VENDI I PUNËS
                     </button>
                     <p style={{ maxHeight: showParagraph4 ? "500px" : "0", overflow: "hidden" }}>
-                      Ne dhe komuniteti do t'ju mbështesim derisa të gjeni punën tuaj të parë.
+                      Ne dhe komuniteti do të ju mbështesim derisa të gjeni punën tuaj të parë.
                       Përgatituni për intervistat tuaja dhe si të bindni punëdhënësit që jeni i
                       duhuri për të punësuar.
                     </p>
