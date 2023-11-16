@@ -14,10 +14,7 @@
   flex-direction: column;
   align-items: center;
 }
-.title span {
-  color: #aaa;
-  font-weight: 200;
-}
+
 .readmore {
   background-color: #891bff;
   border: none;
@@ -26,10 +23,21 @@
   border-radius: 8px;
   display: none;
 }
+.header_container {
+  display: flex;
+  width: 80%;
+  gap: 100px;
+}
+.header_container img {
+  flex: 1;
+}
 .title {
-  width: 100%;
   margin-top: 15vh;
   align-self: left;
+}
+.title span {
+  color: #aaa;
+  font-weight: 200;
 }
 .description {
   background-color: #f0f0f0;

@@ -57,6 +57,7 @@ export default function Trajnimet() {
             <span>Trajnimi</span> <br />
             {course.courses.title}
           </h1>
+
           <p className={read ? styles.description : styles.description_active}>
             {course.courses.content}
           </p>

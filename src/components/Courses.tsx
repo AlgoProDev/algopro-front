@@ -89,7 +89,7 @@ function CourseBox({ image, course_name, lessons, students, level, price, url }:
         height="200px"
       />
       <h4 className={styles.course_name}>{course_name}</h4>
-      <div className={styles.info}>
+      {/* <div className={styles.info}>
         <div className={styles.lessons}>
           <BookIcon />
           &nbsp; {lessons} orë
@@ -102,7 +102,7 @@ function CourseBox({ image, course_name, lessons, students, level, price, url }:
           <DifficultyIcon />
           &nbsp; {level}
         </div>
-      </div>
+      </div> */}
       <div className={styles.button_container}>
         {course_name !== "Coming Soon" ? (
           <Link href={"/trajnimet/" + url} className={styles.information_button}>
