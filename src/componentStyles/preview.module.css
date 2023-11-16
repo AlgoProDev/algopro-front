@@ -24,9 +24,10 @@
   font-size: 20px;
 }
 .information_button {
+  font-size: 24px;
   margin-top: 50px;
   cursor: pointer;
-  padding: 20px 20px 20px 24px;
+  padding: 20px 10px 20px 12px;
   width: 40%;
   color: white;
   background-color: rgba(8, 8, 8, 0.8);

@@ -11,10 +11,10 @@ import Footer from "@/components/Footer";
 import Loader from "@/components/LoadingIcon";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   setTimeout(() => {
     setLoading(false);
-  }, 1500);
+  }, 0);
   return (
     <>
       <div className={styles.loader} style={loading ? {} : { display: "none" }}>

@@ -13,8 +13,14 @@ export default function Trajnimet() {
   const [read, setRead] = useState(true);
   const [course, setCourse] = useState<any>();
   const [courseID, setCourseID] = useState<any>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [openModule, setOpenModule] = useState<string | null>(null);
+
+  const [showParagraph1, setShowParagraph1] = useState(false);
+  const [showParagraph2, setShowParagraph2] = useState(false);
+  const [showParagraph3, setShowParagraph3] = useState(false);
+  const [showParagraph4, setShowParagraph4] = useState(false);
+
   const toggleModule = (module: string) => {
     if (openModule === module) {
       setOpenModule(null);
@@ -66,7 +72,80 @@ export default function Trajnimet() {
           </button>
           <div className={styles.information_container}>
             <div>
-              <h2>Modulet</h2>
+              <div className={styles.why_container}>
+                <h2>
+                  Pse <span>AlgoPro</span>?
+                </h2>
+                <div>
+                  <div>
+                    <button onClick={() => setShowParagraph1(!showParagraph1)}>
+                      <ArrowForwardIosIcon
+                        sx={{ fontSize: 20 }}
+                        style={showParagraph1 ? { transform: "rotate(90deg)" } : {}}
+                      />
+                      PROGRAMIMI PROFESIONAL
+                    </button>
+                    <p style={{ maxHeight: showParagraph1 ? "500px" : "0", overflow: "hidden" }}>
+                      Ndërtoni njohuritë tuaja për programimin profesional. Mos e humbni kohën tuaj
+                      me teori të thatë dhe filloni kodimin menjëherë.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <button onClick={() => setShowParagraph2(!showParagraph2)}>
+                      <ArrowForwardIosIcon
+                        sx={{ fontSize: 20 }}
+                        style={showParagraph2 ? { transform: "rotate(90deg)" } : {}}
+                      />
+                      PROJEKTE PËR PORTFOLIO
+                    </button>
+                    <p style={{ maxHeight: showParagraph2 ? "500px" : "0", overflow: "hidden" }}>
+                      Ju do të krijoni aplikacionet tuaja të para, por jo vetëm për qëllime
+                      trajnimi. Përdorni këto projekte për të bindur kompanitë për aftësitë tuaja.
+                      Konkurrenca juaj do të jetë xheloze.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <button onClick={() => setShowParagraph3(!showParagraph3)}>
+                      <ArrowForwardIosIcon
+                        sx={{ fontSize: 20 }}
+                        style={
+                          showParagraph3
+                            ? {
+                                transform: "rotate(90deg)",
+                              }
+                            : {}
+                        }
+                      />
+                      MUNDËSIA PËR PRAKTIKË
+                    </button>
+                    <p style={{ maxHeight: showParagraph3 ? "500px" : "0", overflow: "hidden" }}>
+                      Studentët do të kenë mundësinë për një praktikë tre mujore në kompaninë tonë
+                      AlgoPro LLC.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <button onClick={() => setShowParagraph4(!showParagraph4)}>
+                      <ArrowForwardIosIcon
+                        sx={{ fontSize: 20 }}
+                        style={showParagraph4 ? { transform: "rotate(90deg)" } : {}}
+                      />
+                      VENDI I PUNËS
+                    </button>
+                    <p style={{ maxHeight: showParagraph4 ? "500px" : "0", overflow: "hidden" }}>
+                      Ne dhe komuniteti do t'ju mbështesim derisa të gjeni punën tuaj të parë.
+                      Përgatituni për intervistat tuaja dhe si të bindni punëdhënësit që jeni i
+                      duhuri për të punësuar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* <h2>Modulet</h2>
               <ul className={styles.modules}>
                 {Array.from(new Set(course.modules.map((item: any) => item.sub_module))).map(
                   (module: any) => (
@@ -105,7 +184,7 @@ export default function Trajnimet() {
                     </li>
                   ),
                 )}
-              </ul>
+              </ul> */}
             </div>
             <div>
               <PermContactCalendarIcon
@@ -142,7 +221,7 @@ export default function Trajnimet() {
           alignItems: "center",
           justifyContent: "center",
         }}>
-        <Loader lottiePath="../loading.json" width={300} height={300} />
+        {/* <Loader lottiePath="../loading.json" width={300} height={300} /> */}
       </div>
     );
   }
