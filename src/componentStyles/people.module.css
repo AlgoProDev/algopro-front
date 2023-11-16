@@ -17,6 +17,7 @@
 
 .people_text h1 {
   font-size: 36px;
+  text-wrap: nowrap;
 }
 
 .people_text h1 span {

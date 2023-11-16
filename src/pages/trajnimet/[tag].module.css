@@ -14,6 +14,18 @@
   flex-direction: column;
   align-items: center;
 }
+.title span {
+  color: #aaa;
+  font-weight: 200;
+}
+.readmore {
+  background-color: #891bff;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: none;
+}
 .title {
   width: 100%;
   margin-top: 15vh;
@@ -23,6 +35,14 @@
   background-color: #f0f0f0;
   padding: 50px;
   width: 100%;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+.description_active {
+  background-color: #f0f0f0;
+  padding: 50px;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
   font-size: 16px;
 }
 .information_container {
@@ -141,4 +161,45 @@
   font-weight: bold;
   border-radius: 12px;
   font-size: 18px;
+}
+@media screen and (max-width: 800px) {
+  .title {
+    font-size: 24px;
+  }
+  .description {
+    max-height: 10vh;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+  }
+  .readmore {
+    background-color: #9d55eb;
+    padding: 12px 24px;
+    color: white;
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  .information_container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .information_container > div {
+    padding: 60px 20px 20px 20px;
+    width: 120%;
+  }
+  .information_container > div:last-child {
+    width: 100%;
+  }
+  .button {
+    font-size: 14px;
+    text-wrap: nowrap;
+    width: 100%;
+  }
+  .sub_modules {
+    font-size: 14px;
+  }
 }

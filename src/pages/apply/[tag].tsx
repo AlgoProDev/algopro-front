@@ -203,19 +203,19 @@ export default function Trajnimet() {
                     color="secondary"
                     value="kosova"
                     control={<Radio color="secondary" />}
-                    label="Kosova"
+                    label="Kosovë"
                   />
                   <FormControlLabel
                     color="secondary"
                     value="shqiperia"
                     control={<Radio color="secondary" />}
-                    label="Shqipëria"
+                    label="Shqipëri"
                   />
                   <FormControlLabel
                     color="secondary"
                     value="macedonia"
                     control={<Radio color="secondary" />}
-                    label="Macedonia"
+                    label="Macedoni"
                   />
                 </RadioGroup>
               </FormControl>

@@ -64,8 +64,7 @@ Message: ${data.get("message")}`,
         open={open}
         onClose={onClose}
         aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+        aria-describedby="modal-modal-description">
         <Box className={styles.box}>
           <div className={styles.header}>
             <h3>
@@ -74,9 +73,7 @@ Message: ${data.get("message")}`,
             </h3>
             <CloseIcon onClick={onClose} className={styles.closeIcon} />
           </div>
-          <p style={{ color: "grey", marginTop: "10px" }}>
-            Send us a message 😄
-          </p>
+          <p style={{ color: "grey", marginTop: "10px" }}>Send us a message 😄</p>
           <form onSubmit={handleSubmit} className={styles.form}>
             <TextField
               label="Name"
@@ -120,7 +117,7 @@ Message: ${data.get("message")}`,
               label="Message"
               name="message"
               multiline
-              rows={4}
+              rows={2}
               variant="outlined"
               className={styles.message_field}
               fullWidth
@@ -129,11 +126,8 @@ Message: ${data.get("message")}`,
             />{" "}
             <div
               className={
-                feedbackMessage.includes("Error")
-                  ? styles.error_message
-                  : styles.success_message
-              }
-            >
+                feedbackMessage.includes("Error") ? styles.error_message : styles.success_message
+              }>
               {feedbackMessage}
             </div>
             <div className={styles.button_container}>
@@ -141,8 +135,7 @@ Message: ${data.get("message")}`,
                 variant="outlined"
                 onClick={onClose}
                 className={styles.button}
-                style={{ fontWeight: "700" }}
-              >
+                style={{ fontWeight: "700" }}>
                 Cancel
               </Button>
               <Button
@@ -150,8 +143,7 @@ Message: ${data.get("message")}`,
                 variant="contained"
                 color="secondary"
                 className={styles.button}
-                style={{ fontWeight: "700" }}
-              >
+                style={{ fontWeight: "700" }}>
                 Submit
               </Button>
             </div>

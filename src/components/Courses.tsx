@@ -81,7 +81,13 @@ export const Courses = () => {
 function CourseBox({ image, course_name, lessons, students, level, price, url }: Props) {
   return (
     <div className={styles.course_container}>
-      <img src={image} alt="course-image" className={styles.course_image} width="300px" />
+      <img
+        src={image}
+        alt="course-image"
+        className={styles.course_image}
+        width="300px"
+        height="200px"
+      />
       <h4 className={styles.course_name}>{course_name}</h4>
       <div className={styles.info}>
         <div className={styles.lessons}>

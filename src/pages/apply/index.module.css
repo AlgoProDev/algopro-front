@@ -18,3 +18,11 @@
   display: flex;
   gap: 20px;
 }
+@media screen and (max-width: 800px) {
+  .form_container {
+    width: 80%;
+  }
+  .form_container > div {
+    flex-direction: column;
+  }
+}
