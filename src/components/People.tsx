@@ -32,7 +32,7 @@ const People = () => {
       <div className={styles.people_information}>
         <div className={styles.people_text}>
           <h1>
-            <span> Intruktorët </span> tanë
+            <span> Instruktorët </span> tanë
           </h1>
           <p>
             Në AlgoPro Academy, instruktorët tanë janë themeli i komunitetit tonë të mësimit, të

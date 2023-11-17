@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import styles from "@/pages/trajnimet/[tag].module.css";
-import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
-import Loader from "@/components/LoadingIcon";
 
 export default function Trajnimet() {
   const router = useRouter();

@@ -109,8 +109,7 @@
   }
   .information_container {
     width: 100%;
-    padding: 20px;
-    padding: 2vh 0 0 0;
+    padding: 1vh 0 0 0;
   }
   .information_text {
     font-size: 20px;
