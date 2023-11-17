@@ -92,6 +92,7 @@
   font-size: 16px;
   transition: all 0.2s ease-in-out;
 }
+
 .description_active {
   background-color: #f0f0f0;
   padding: 30px 50px;
@@ -230,7 +231,7 @@
     width: 150px;
     height: 100px;
   }
-  .description {
+  .description p {
     max-height: 10vh;
     text-overflow: ellipsis;
     overflow: hidden;
