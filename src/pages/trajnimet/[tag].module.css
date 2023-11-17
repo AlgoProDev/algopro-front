@@ -16,6 +16,7 @@
 }
 
 .readmore {
+  margin-top: 20px;
   background-color: #891bff;
   border: none;
   color: white;
@@ -23,10 +24,19 @@
   border-radius: 8px;
   display: none;
 }
-.header_container {
+
+.title_container {
+  margin-top: 15vh;
   display: flex;
-  width: 80%;
-  gap: 100px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.title_container img {
+  object-fit: cover;
+  width: 300px;
+  height: 100px;
+  border-radius: 8px;
 }
 
 .why_container {
@@ -67,11 +77,8 @@
   color: #555;
   transition: max-height 0.3s ease-in-out;
 }
-.header_container img {
-  flex: 1;
-}
+
 .title {
-  margin-top: 15vh;
   align-self: left;
 }
 .title span {
@@ -80,14 +87,14 @@
 }
 .description {
   background-color: #f0f0f0;
-  padding: 50px;
+  padding: 30px 50px;
   width: 100%;
   font-size: 16px;
   transition: all 0.2s ease-in-out;
 }
 .description_active {
   background-color: #f0f0f0;
-  padding: 50px;
+  padding: 30px 50px;
   width: 100%;
   transition: all 0.2s ease-in-out;
   font-size: 16px;
@@ -210,8 +217,18 @@
   font-size: 18px;
 }
 @media screen and (max-width: 800px) {
+  .content_container {
+    width: 80%;
+  }
   .title {
-    font-size: 24px;
+    font-size: 20px;
+  }
+  .title span {
+    font-size: 18px;
+  }
+  .title_container img {
+    width: 150px;
+    height: 100px;
   }
   .description {
     max-height: 10vh;

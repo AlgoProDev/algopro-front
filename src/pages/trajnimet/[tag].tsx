@@ -59,14 +59,20 @@ export default function Trajnimet() {
       <div className={styles.main_container}>
         <Navigation style={false} show={false} />
         <div className={styles.content_container}>
-          <h1 className={styles.title}>
-            <span>Trajnimi</span> <br />
-            {course.courses.title}
-          </h1>
-
-          <p className={read ? styles.description : styles.description_active}>
-            {course.courses.content}
-          </p>
+          <div className={styles.title_container}>
+            <img src={course.courses.img_url} alt="" width="40%" height="20%" />
+            <h1 className={styles.title}>
+              <span>Trajnimi</span> <br />
+              {course.courses.title}
+            </h1>
+          </div>
+          <div className={read ? styles.description : styles.description_active}>
+            <h4>Çfarë do bëj ky program për ju?</h4>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: course.courses.content.split(". ").join(".<br/> • "),
+              }}></p>
+          </div>
           <button onClick={() => setRead(!read)} className={styles.readmore}>
             {read ? "Lexo më shumë" : "Fsheh"}
           </button>
