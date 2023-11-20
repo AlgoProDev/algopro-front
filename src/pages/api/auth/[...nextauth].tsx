@@ -15,13 +15,13 @@ export default NextAuth({
       },
       authorize: async (credentials, req) => {
         if (credentials) {
-          const user = await prisma.adminUser.findUnique({
+          const user = await prisma.user.findUnique({
             where: { email: credentials.email },
           });
 
           if (user && bcrypt.compareSync(credentials.password, user.password)) {
             // Convert `id` to a string
-            return { id: user.id.toString(), name: user.name, email: user.email };
+            return { id: user.id.toString(), name: user.name, email: user.email, type: user.type };
           } else {
             throw new Error("Invalid email or password");
           }

@@ -10,7 +10,7 @@ import FormLabel from "@mui/material/FormLabel";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "@mui/material/Button";
-import styles from "./index.module.css";
+import styles from "./[tag].module.css";
 import { useRouter } from "next/router";
 import Loader from "@/components/LoadingIcon";
 
@@ -37,36 +37,37 @@ export default function Trajnimet() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const formData = {
-      subject: `${courseID} Application - ${data.get("name")} ${data.get("lastName")}`,
-      from_email: data.get("email"),
-      message: `Contacted by ${data.get("name")} ${data.get("lastName")}
-                Contact:
-                - Email: ${data.get("email")} 
-                - Phone: ${data.get("phone")}
-                Answers:
-                - Work: ${data.get("work")}
-                - Student: ${data.get("student")}
-                - Contact: ${data.get("contact")}
-                - Location: ${data.get("location")}
-                Message:
-                - ${data.get("message")}`,
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const embed = {
+      title: `${courseID} Application - ${data.get("name")} ${data.get("lastName")}`,
+      fields: [
+        { name: "Email", value: `${data.get("email")}`, inline: true },
+        { name: "Phone", value: `${data.get("phone")}`, inline: true },
+        { name: "Work", value: `${data.get("work")}`, inline: true },
+        { name: "Student", value: `${data.get("student")}`, inline: true },
+        { name: "Contact", value: `${data.get("contact")}`, inline: true },
+        { name: "Location", value: `${data.get("location")}`, inline: true },
+        { name: "Message", value: `${data.get("message")}` },
+      ],
+      color: 3447003,
     };
 
-    const fetchPromise = fetch("https://oltirocka.pythonanywhere.com/api/send_email/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    const fetchPromise = fetch(
+      "https://discord.com/api/webhooks/1169022004834349167/YIlBbCS-WdXyuqdI5lDc6hCNfh7izJvFxdxy60NMoQ8EsPs_3FeoLfO9UoPRUhr2JMBu",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ embeds: [embed] }),
+      },
+    );
     notify(fetchPromise, "Email sent successfully", "Error with email");
     try {
       const response = await fetchPromise;
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const responseData = await response.json();
-      console.log(responseData);
+      form.reset();
     } catch (error) {
       console.error("Error sending email", error);
     }
@@ -107,6 +108,7 @@ export default function Trajnimet() {
                 margin="normal"
                 fullWidth
                 color="secondary"
+                required
               />
               <TextField
                 label="Mbiemri"
@@ -115,6 +117,7 @@ export default function Trajnimet() {
                 margin="normal"
                 fullWidth
                 color="secondary"
+                required
               />
             </div>
             <div>
@@ -126,6 +129,7 @@ export default function Trajnimet() {
                 fullWidth
                 type="email"
                 color="secondary"
+                required
               />
               <TextField
                 label="Numri i telefonit"
@@ -135,6 +139,7 @@ export default function Trajnimet() {
                 fullWidth
                 type="tel"
                 color="secondary"
+                required
               />
             </div>
             <div>
@@ -144,13 +149,13 @@ export default function Trajnimet() {
                 </FormLabel>
                 <RadioGroup row name="work">
                   <FormControlLabel
-                    value="po"
+                    value="Po"
                     color="secondary"
                     control={<Radio color="secondary" />}
                     label="Po"
                   />
                   <FormControlLabel
-                    value="jo"
+                    value="Jo"
                     color="secondary"
                     control={<Radio color="secondary" />}
                     label="Jo"
@@ -164,13 +169,13 @@ export default function Trajnimet() {
                 <RadioGroup row name="student">
                   <FormControlLabel
                     color="secondary"
-                    value="po"
+                    value="Po"
                     control={<Radio color="secondary" />}
                     label="Po"
                   />
                   <FormControlLabel
                     color="secondary"
-                    value="jo"
+                    value="Jo"
                     control={<Radio color="secondary" />}
                     label="Jo"
                   />
@@ -183,13 +188,13 @@ export default function Trajnimet() {
                 <RadioGroup row name="contact">
                   <FormControlLabel
                     color="secondary"
-                    value="viber"
+                    value="Viber"
                     control={<Radio color="secondary" />}
                     label="Viber"
                   />
                   <FormControlLabel
                     color="secondary"
-                    value="whatsapp"
+                    value="Whatsapp"
                     control={<Radio color="secondary" />}
                     label="Whatsapp"
                   />
@@ -201,19 +206,19 @@ export default function Trajnimet() {
                 <RadioGroup color="secondary" row name="location">
                   <FormControlLabel
                     color="secondary"
-                    value="kosova"
+                    value="Kosova"
                     control={<Radio color="secondary" />}
                     label="Kosovë"
                   />
                   <FormControlLabel
                     color="secondary"
-                    value="shqiperia"
+                    value="Shqiperia"
                     control={<Radio color="secondary" />}
                     label="Shqipëri"
                   />
                   <FormControlLabel
                     color="secondary"
-                    value="macedonia"
+                    value="Macedonia"
                     control={<Radio color="secondary" />}
                     label="Macedoni"
                   />
@@ -228,6 +233,7 @@ export default function Trajnimet() {
               fullWidth
               multiline
               name="message"
+              required
               color="secondary"
             />
             <Button type="submit" variant="contained" color="secondary">

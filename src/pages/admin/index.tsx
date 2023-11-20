@@ -15,13 +15,7 @@ const Admin: React.FC = () => {
 
   if (status === "loading" || !session) return <div>Loading...</div>;
 
-  return (
-    <div>
-      <iframe
-        src="http://localhost:5555"
-        style={{ width: "100vw", height: "100vh", border: "none" }}></iframe>
-    </div>
-  );
+  return <div></div>;
 };
 
 export const getServerSideProps = async (context: any) => {

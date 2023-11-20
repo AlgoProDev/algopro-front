@@ -29,7 +29,6 @@ const AdminLogin: React.FC = () => {
 
     if (!result?.error) {
       router.push("/admin");
-    } else {
       // Handle errors
     }
   };

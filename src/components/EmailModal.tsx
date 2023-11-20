@@ -18,27 +18,30 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const formData = {
-      subject: title,
-      from_email: data.get("email"),
-      message: `Contacted by ${data.get("name")} ${data.get("lastName")}
-Contact: ${data.get("email")} ${data.get("phone")}
-Message: ${data.get("message")}`,
+    const embed = {
+      title: `Contacted by ${data.get("name")} ${data.get("lastName")}`,
+      fields: [
+        { name: "Email", value: `${data.get("email")}`, inline: true },
+        { name: "Phone", value: `${data.get("phone")}`, inline: true },
+        { name: "Message", value: `${data.get("message")}` },
+      ],
+      color: 3447003,
     };
 
-    await fetch("https://oltirocka.pythonanywhere.com/api/send_email/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    fetch(
+      "https://discord.com/api/webhooks/1169022004834349167/YIlBbCS-WdXyuqdI5lDc6hCNfh7izJvFxdxy60NMoQ8EsPs_3FeoLfO9UoPRUhr2JMBu",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ embeds: [embed] }),
       },
-      body: JSON.stringify(formData),
-    })
+    )
       .then((response) => {
         if (!response.ok) {
           response.json().then((json) => console.log(json));
           throw new Error("Network response was not ok");
         }
-        return response.json();
+        return response;
       })
       .then((data) => {
         console.log(data);
