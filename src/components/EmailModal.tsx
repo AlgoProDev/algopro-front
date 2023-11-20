@@ -86,6 +86,7 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
               fullWidth
               margin="normal"
               color="secondary"
+              required
             />
             <TextField
               label="Last Name"
@@ -95,6 +96,7 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
               fullWidth
               margin="normal"
               color="secondary"
+              required
             />
             <TextField
               label="Email"
@@ -105,6 +107,7 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
               fullWidth
               margin="normal"
               color="secondary"
+              required
             />
             <TextField
               label="Phone Number"
@@ -115,6 +118,7 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
               fullWidth
               margin="normal"
               color="secondary"
+              required
             />
             <TextField
               label="Message"
@@ -126,6 +130,7 @@ export default function BasicModal({ open, onClose, title }: BasicModalProps) {
               fullWidth
               margin="normal"
               color="secondary"
+              required
             />{" "}
             <div
               className={
