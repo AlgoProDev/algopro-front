@@ -46,10 +46,10 @@ model People {
   updatedAt DateTime @updatedAt @map("updated_at")
 }
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  name      String?
-  type      String   @default("student")
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  email      String   @unique
+  password   String
+  name       String?
+  privileges Int      @default(0)
+  createdAt  DateTime @default(now())
 }
